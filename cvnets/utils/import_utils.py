@@ -26,9 +26,6 @@ def import_modules_from_folder(
             `LIBRARY_ROOT/{folder_name}/**/*.py`. For any extra_root provided, it will
             also import `LIBRARY_ROOT/{extra_root}/{folder_name}/**/*.py` modules.
     """
-    if not LIBRARY_ROOT.joinpath(folder_name).exists():
-        # lazy loading handling: skip if the main folder does not exist
-        return
     
     # python 3.12+ compatibility: use rglob instead of glob with recursive
     search_roots = [LIBRARY_ROOT / folder_name]
