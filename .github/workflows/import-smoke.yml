@@ -23,8 +23,10 @@ jobs:
         run: |
           python - <<'PY'
           import importlib
-          importlib.import_module('cvnets')
+          # Avoid importing top-level `cvnets` which may import heavy runtime deps (e.g., torch).
           importlib.import_module('cvnets.data')
           importlib.import_module('cvnets.utils')
+          # Import a small utility to check submodule exports
+          importlib.import_module('cvnets.utils.common_utils')
           print('imports OK')
           PY

@@ -34,7 +34,7 @@ jobs:
           python -m sphinx -b html docs/source docs/_build/html
 
       - name: Upload pages artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v2
         with:
           path: docs/_build/html
 
