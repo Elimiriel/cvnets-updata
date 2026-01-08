@@ -73,3 +73,6 @@ def arguments_model(parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
     parser = BaseAnyNNModel.add_arguments(parser=parser)
     parser = MODEL_REGISTRY.all_arguments(parser=parser)
     return parser
+
+from cvnets.utils.import_utils import import_modules_from_folder
+import_modules_from_folder("cvnets/models")
