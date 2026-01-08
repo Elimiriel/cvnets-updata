@@ -9,8 +9,8 @@ import av
 import numpy
 import torch
 
-from data.transforms.base_transforms import BaseTransformation
-from data.video_reader import VIDEO_READER_REGISTRY, BaseAVReader
+from cvnets.data.transforms.base_transforms import BaseTransformation
+from cvnets.data.video_reader import VIDEO_READER_REGISTRY, BaseAVReader
 from cvnets.utils import logger
 
 

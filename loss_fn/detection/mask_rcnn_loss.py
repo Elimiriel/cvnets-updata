@@ -9,8 +9,8 @@ from typing import Any, Dict
 import torch
 from torch import Tensor
 
-from loss_fn import LOSS_REGISTRY
-from loss_fn.detection.base_detection_criteria import BaseDetectionCriteria
+from cvnets.loss_fn import LOSS_REGISTRY
+from cvnets.loss_fn.detection.base_detection_criteria import BaseDetectionCriteria
 from cvnets.utils import logger
 
 

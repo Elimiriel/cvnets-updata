@@ -9,7 +9,7 @@ import torch
 from torch import Tensor
 from torch.nn import functional as F
 
-from loss_fn import LOSS_REGISTRY, BaseCriteria
+from cvnets.loss_fn import LOSS_REGISTRY, BaseCriteria
 from cvnets.utils import logger
 from cvnets.utils.ddp_utils import is_master
 

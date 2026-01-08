@@ -12,8 +12,8 @@ from pycocotools import mask
 from pycocotools.coco import COCO
 from torch import Tensor
 
-from data.datasets import DATASET_REGISTRY
-from data.datasets.segmentation.base_segmentation import BaseImageSegmentationDataset
+from cvnets.data.datasets import DATASET_REGISTRY
+from cvnets.data.datasets.segmentation.base_segmentation import BaseImageSegmentationDataset
 
 
 @DATASET_REGISTRY.register(name="coco", type="segmentation")

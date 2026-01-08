@@ -10,8 +10,8 @@ from typing import Any, List, Mapping, Tuple
 
 from torch import Tensor
 
-from loss_fn import LOSS_REGISTRY, BaseCriteria, build_loss_fn
-from options.utils import flatten_yaml_as_dict
+from cvnets.loss_fn import LOSS_REGISTRY, BaseCriteria, build_loss_fn
+from cvnets.options.utils import flatten_yaml_as_dict
 from cvnets.utils import logger
 
 

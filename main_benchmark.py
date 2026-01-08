@@ -10,8 +10,8 @@ import torch
 from torch.cuda.amp import autocast
 
 from cvnets import get_model
-from engine.utils import autocast_fn
-from options.opts import get_benchmarking_arguments
+from cvnets.engine.utils import autocast_fn
+from cvnets.options.opts import get_benchmarking_arguments
 from cvnets.utils import logger
 from cvnets.utils.common_utils import device_setup
 from cvnets.utils.pytorch_to_coreml import convert_pytorch_to_coreml

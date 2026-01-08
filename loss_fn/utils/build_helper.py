@@ -5,9 +5,9 @@ import argparse
 
 from torch import nn
 
-from common import is_test_env
+from cvnets.common import is_test_env
 from cvnets.models import get_model
-from options.utils import extract_opts_with_prefix_replacement
+from cvnets.options.utils import extract_opts_with_prefix_replacement
 from cvnets.utils import logger
 
 

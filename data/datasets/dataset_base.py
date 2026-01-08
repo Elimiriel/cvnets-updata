@@ -13,8 +13,8 @@ import torch
 from PIL import Image
 from torch.utils import data
 
-from data.transforms import BaseTransformation
-from data.video_reader import get_video_reader
+from cvnets.data.transforms import BaseTransformation
+from cvnets.data.video_reader import get_video_reader
 from cvnets.utils import logger
 
 

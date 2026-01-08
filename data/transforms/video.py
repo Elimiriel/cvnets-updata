@@ -19,9 +19,9 @@ from torch.nn import functional as F
 from torchvision.io import write_video
 from torchvision.transforms import functional as FV
 
-from data.transforms import TRANSFORMATIONS_REGISTRY, BaseTransformation
-from data.transforms.utils import *
-from options.parse_args import JsonValidator
+from cvnets.data.transforms import TRANSFORMATIONS_REGISTRY, BaseTransformation
+from cvnets.data.transforms.utils import *
+from cvnets.options.parse_args import JsonValidator
 from cvnets.utils import logger
 
 SUPPORTED_PYTORCH_INTERPOLATIONS = ["nearest", "bilinear", "bicubic"]

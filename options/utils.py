@@ -10,7 +10,7 @@ import re
 
 import yaml
 
-from options.errors import UnrecognizedYamlConfigEntry
+from cvnets.options.errors import UnrecognizedYamlConfigEntry
 from cvnets.utils import logger
 from cvnets.utils.ddp_utils import is_master
 from cvnets.utils.download_utils import get_local_path

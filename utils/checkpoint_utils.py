@@ -12,7 +12,7 @@ from typing import Dict, List, Optional, Tuple, Union
 import torch
 
 from cvnets import EMA
-from optim import BaseOptim
+from cvnets.optim import BaseOptim
 from cvnets.utils import logger
 from cvnets.utils.common_utils import unwrap_model_fn
 from cvnets.utils.ddp_utils import is_master

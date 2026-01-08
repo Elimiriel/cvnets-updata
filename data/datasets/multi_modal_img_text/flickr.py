@@ -10,8 +10,8 @@ from typing import Dict, List, Optional, Tuple
 
 import torch
 
-from data.datasets import DATASET_REGISTRY
-from data.datasets.multi_modal_img_text.base_multi_modal_img_text import (
+from cvnets.data.datasets import DATASET_REGISTRY
+from cvnets.data.datasets.multi_modal_img_text.base_multi_modal_img_text import (
     BaseMultiModalImgText,
 )
 from cvnets.utils import logger

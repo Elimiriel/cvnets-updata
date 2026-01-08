@@ -7,10 +7,10 @@ import time
 
 import torch
 
-from common import DEFAULT_LOG_FREQ, SUPPORTED_VIDEO_CLIP_VOTING_FN
-from engine.utils import autocast_fn, get_batch_size, get_log_writers
-from metrics.stats import Statistics
-from options.parse_args import parse_validation_metric_names
+from cvnets.common import DEFAULT_LOG_FREQ, SUPPORTED_VIDEO_CLIP_VOTING_FN
+from cvnets.engine.utils import autocast_fn, get_batch_size, get_log_writers
+from cvnets.metrics.stats import Statistics
+from cvnets.options.parse_args import parse_validation_metric_names
 from cvnets.utils import logger
 from cvnets.utils.common_utils import move_to_device
 from cvnets.utils.ddp_utils import is_master

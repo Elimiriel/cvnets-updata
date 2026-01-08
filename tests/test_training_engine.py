@@ -19,10 +19,10 @@ import torch
 from torch.cuda.amp import GradScaler
 
 from cvnets import EMA, get_model
-from engine import Trainer
-from loss_fn import build_loss_fn
-from optim import build_optimizer
-from optim.scheduler import build_scheduler
+from cvnets.engine import Trainer
+from cvnets.loss_fn import build_loss_fn
+from cvnets.optim import build_optimizer
+from cvnets.optim.scheduler import build_scheduler
 from tests.configs import get_config
 from tests.dummy_loader import create_train_val_loader
 from tests.test_utils import unset_pretrained_models_from_opts

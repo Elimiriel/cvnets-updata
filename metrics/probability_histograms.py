@@ -11,8 +11,8 @@ import numpy as np
 from torch import Tensor
 from torch.nn import functional as F
 
-from metrics import METRICS_REGISTRY
-from metrics.metric_base import EpochMetric
+from cvnets.metrics import METRICS_REGISTRY
+from cvnets.metrics.metric_base import EpochMetric
 from cvnets.utils import logger
 
 

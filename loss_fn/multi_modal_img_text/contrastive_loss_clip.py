@@ -9,8 +9,8 @@ import torch
 from torch import Tensor
 from torch.nn import functional as F
 
-from loss_fn import LOSS_REGISTRY
-from loss_fn.multi_modal_img_text.base_multi_modal_img_text_criteria import (
+from cvnets.loss_fn import LOSS_REGISTRY
+from cvnets.loss_fn.multi_modal_img_text.base_multi_modal_img_text_criteria import (
     BaseMultiModalImageTextCriteria,
 )
 from cvnets.utils import logger

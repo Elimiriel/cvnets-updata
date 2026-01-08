@@ -6,7 +6,7 @@
 import argparse
 from typing import List, Tuple
 
-from options.utils import extract_opts_with_prefix_replacement
+from cvnets.options.utils import extract_opts_with_prefix_replacement
 from cvnets.utils import logger
 
 

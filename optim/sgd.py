@@ -9,8 +9,8 @@ from typing import Dict, Iterable, Union
 from torch import Tensor
 from torch.optim import SGD
 
-from optim import OPTIM_REGISTRY
-from optim.base_optim import BaseOptim
+from cvnets.optim import OPTIM_REGISTRY
+from cvnets.optim.base_optim import BaseOptim
 
 
 @OPTIM_REGISTRY.register(name="sgd")

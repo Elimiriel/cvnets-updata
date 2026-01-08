@@ -8,9 +8,9 @@ from typing import List, Optional
 import torch
 
 from cvnets import get_model
-from data import create_test_loader
-from engine import Evaluator
-from options.opts import get_eval_arguments
+from cvnets.data import create_test_loader
+from cvnets.engine import Evaluator
+from cvnets.options.opts import get_eval_arguments
 from cvnets.utils import logger, resources
 from cvnets.utils.common_utils import create_directories, device_setup
 from cvnets.utils.ddp_utils import distributed_init, is_master
@@ -141,13 +141,13 @@ def main_worker(args: Optional[List[str]] = None, **kwargs):
 
 # for segmentation and detection, we follow a different evaluation pipeline that allows to save the results too
 def main_worker_segmentation(args: Optional[List[str]] = None, **kwargs):
-    from engine.eval_segmentation import main_segmentation_evaluation
+    from cvnets.engine.eval_segmentation import main_segmentation_evaluation
 
     main_segmentation_evaluation(args=args, **kwargs)
 
 
 def main_worker_detection(args: Optional[List[str]] = None, **kwargs):
-    from engine.eval_detection import main_detection_evaluation
+    from cvnets.engine.eval_detection import main_detection_evaluation
 
     main_detection_evaluation(args=args, **kwargs)
 

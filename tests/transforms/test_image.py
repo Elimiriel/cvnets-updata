@@ -11,8 +11,8 @@ import pytest
 import torch
 from PIL import Image
 
-from data.transforms import image_pil as pil_transforms
-from data.transforms import image_torch as torch_transforms
+from cvnets.data.transforms import image_pil as pil_transforms
+from cvnets.data.transforms import image_torch as torch_transforms
 
 
 @pytest.mark.parametrize("height", [24, 32])

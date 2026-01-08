@@ -8,7 +8,7 @@ from typing import Optional
 
 from PIL import Image
 
-from data.datasets.multi_modal_img_text.zero_shot.imagenet import (
+from cvnets.data.datasets.multi_modal_img_text.zero_shot.imagenet import (
     ImageNetDatasetZeroShot,
     generate_text_prompts_clip,
 )

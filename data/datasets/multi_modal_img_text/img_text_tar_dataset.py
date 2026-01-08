@@ -16,8 +16,8 @@ import numpy as np
 import torch
 from PIL import Image, ImageFile
 
-from data.datasets import DATASET_REGISTRY
-from data.datasets.multi_modal_img_text.base_multi_modal_img_text import (
+from cvnets.data.datasets import DATASET_REGISTRY
+from cvnets.data.datasets.multi_modal_img_text.base_multi_modal_img_text import (
     BaseMultiModalImgText,
 )
 from cvnets.utils import logger, resources

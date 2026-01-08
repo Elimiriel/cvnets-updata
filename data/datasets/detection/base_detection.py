@@ -5,7 +5,7 @@
 
 import argparse
 
-from data.datasets import BaseImageDataset
+from cvnets.data.datasets import BaseImageDataset
 
 
 class BaseDetectionDataset(BaseImageDataset):

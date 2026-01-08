@@ -12,9 +12,9 @@ import torch
 from PIL import Image
 from torch import Tensor
 
-from data.datasets.dataset_base import BaseImageDataset
-from data.transforms import image_pil as T
-from data.transforms.common import Compose
+from cvnets.data.datasets.dataset_base import BaseImageDataset
+from cvnets.data.transforms import image_pil as T
+from cvnets.data.transforms.common import Compose
 from cvnets.utils import logger
 from cvnets.utils.color_map import Colormap
 

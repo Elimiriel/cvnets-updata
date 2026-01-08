@@ -6,7 +6,7 @@ import argparse
 import pytest
 import torch
 
-from loss_fn.neural_augmentation import NeuralAugmentation
+from cvnets.loss_fn.neural_augmentation import NeuralAugmentation
 
 
 @pytest.mark.parametrize("batch_size", [1, 2])

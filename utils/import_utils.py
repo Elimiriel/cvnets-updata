@@ -7,7 +7,7 @@ import importlib
 import os
 from typing import Sequence
 
-from common import LIBRARY_ROOT
+from cvnets.common import LIBRARY_ROOT
 from cvnets.utils import logger
 
 

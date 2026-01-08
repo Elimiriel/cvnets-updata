@@ -11,7 +11,7 @@ import pytest
 import scipy.io.wavfile as wav
 import torch
 
-from data.transforms.audio import (
+from cvnets.data.transforms.audio import (
     AudioResample,
     Gain,
     LambdaAudio,

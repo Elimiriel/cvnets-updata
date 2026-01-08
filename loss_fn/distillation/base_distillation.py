@@ -7,8 +7,8 @@ from typing import Mapping, Union
 import torch
 from torch import Tensor
 
-from loss_fn import LOSS_REGISTRY, BaseCriteria
-from loss_fn.utils.build_helper import build_cls_teacher_from_opts
+from cvnets.loss_fn import LOSS_REGISTRY, BaseCriteria
+from cvnets.loss_fn.utils.build_helper import build_cls_teacher_from_opts
 from cvnets.utils import logger
 
 

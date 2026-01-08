@@ -14,12 +14,12 @@ from torch.nn import functional as F
 from torchvision.transforms import functional as F_vision
 from tqdm import tqdm
 
-from common import SUPPORTED_IMAGE_EXTNS
+from cvnets.common import SUPPORTED_IMAGE_EXTNS
 from cvnets import get_model
-from data import create_test_loader
-from engine.utils import autocast_fn
-from metrics.confusion_mat import ConfusionMatrix
-from options.opts import get_training_arguments
+from cvnets.data import create_test_loader
+from cvnets.engine.utils import autocast_fn
+from cvnets.metrics.confusion_mat import ConfusionMatrix
+from cvnets.options.opts import get_training_arguments
 from cvnets.utils import logger, resources
 from cvnets.utils.color_map import Colormap
 from cvnets.utils.common_utils import create_directories, device_setup
@@ -303,7 +303,7 @@ def predict_labeled_dataset(opts, **kwargs) -> None:
 
     is_city_dataset = getattr(opts, "dataset.name", "") == "cityscapes"
     if is_city_dataset:
-        from engine.segmentation_utils.cityscapes_iou import eval_cityscapes
+        from cvnets.engine.segmentation_utils.cityscapes_iou import eval_cityscapes
 
         pred_dir = "{}/predictions_no_cmap/".format(
             getattr(opts, "common.exp_loc", None)

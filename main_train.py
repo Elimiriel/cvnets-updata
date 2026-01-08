@@ -11,19 +11,19 @@ import torch
 from torch.cuda.amp import GradScaler
 from torch.distributed.elastic.multiprocessing import errors
 
-from common import (
+from cvnets.common import (
     DEFAULT_EPOCHS,
     DEFAULT_ITERATIONS,
     DEFAULT_MAX_EPOCHS,
     DEFAULT_MAX_ITERATIONS,
 )
 from cvnets import EMA, get_model
-from data import create_train_val_loader
-from engine import Trainer
-from loss_fn import build_loss_fn
-from optim import build_optimizer
-from optim.scheduler import build_scheduler
-from options.opts import get_training_arguments
+from cvnets.data import create_train_val_loader
+from cvnets.engine import Trainer
+from cvnets.loss_fn import build_loss_fn
+from cvnets.optim import build_optimizer
+from cvnets.optim.scheduler import build_scheduler
+from cvnets.options.opts import get_training_arguments
 from cvnets.utils import logger, resources
 from cvnets.utils.checkpoint_utils import load_checkpoint, load_model_state
 from cvnets.utils.common_utils import create_directories, device_setup

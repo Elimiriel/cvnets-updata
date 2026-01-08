@@ -13,8 +13,8 @@ from typing import Iterator, List, Mapping, Optional, Tuple
 
 from torch.utils.data.sampler import Sampler
 
-from data.sampler import SAMPLER_REGISTRY, build_sampler
-from options.utils import flatten_yaml_as_dict
+from cvnets.data.sampler import SAMPLER_REGISTRY, build_sampler
+from cvnets.options.utils import flatten_yaml_as_dict
 from cvnets.utils import logger
 
 

@@ -11,7 +11,7 @@ import numpy as np
 import torch
 from PIL import Image
 
-from data.transforms import TRANSFORMATIONS_REGISTRY, BaseTransformation
+from cvnets.data.transforms import TRANSFORMATIONS_REGISTRY, BaseTransformation
 
 
 def _image_to_bytes(x: torch.Tensor, **kwargs) -> io.BytesIO:

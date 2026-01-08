@@ -9,7 +9,7 @@ import torch
 from torch import Tensor
 from torchtext.transforms import CLIPTokenizer
 
-from data.text_tokenizer import TOKENIZER_REGISTRY, BaseTokenizer
+from cvnets.data.text_tokenizer import TOKENIZER_REGISTRY, BaseTokenizer
 from cvnets.utils import logger
 from cvnets.utils.download_utils import get_local_path
 

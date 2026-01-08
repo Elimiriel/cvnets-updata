@@ -9,9 +9,9 @@ from typing import Any, Mapping, Optional, Tuple, Union
 from torch import Tensor
 from torch.nn import functional as F
 
-from loss_fn import LOSS_REGISTRY
-from loss_fn.segmentation.base_segmentation_criteria import BaseSegmentationCriteria
-from loss_fn.utils.class_weighting import compute_class_weights
+from cvnets.loss_fn import LOSS_REGISTRY
+from cvnets.loss_fn.segmentation.base_segmentation_criteria import BaseSegmentationCriteria
+from cvnets.loss_fn.utils.class_weighting import compute_class_weights
 from cvnets.utils import logger
 
 

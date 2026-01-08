@@ -8,10 +8,10 @@ from typing import Optional
 
 from PIL import Image
 
-from data.datasets.classification.imagenet import ImageNetDataset
-from data.datasets.classification.imagenet_a import ImageNetADataset
-from data.datasets.classification.imagenet_r import ImageNetRDataset
-from data.datasets.classification.imagenet_sketch import ImageNetSketchDataset
+from cvnets.data.datasets.classification.imagenet import ImageNetDataset
+from cvnets.data.datasets.classification.imagenet_a import ImageNetADataset
+from cvnets.data.datasets.classification.imagenet_r import ImageNetRDataset
+from cvnets.data.datasets.classification.imagenet_sketch import ImageNetSketchDataset
 
 TOTAL_SAMPLES = 100
 

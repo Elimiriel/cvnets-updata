@@ -6,7 +6,7 @@ from typing import Any, Dict, Union
 
 from torch import Tensor
 
-from loss_fn import LOSS_REGISTRY, BaseCriteria
+from cvnets.loss_fn import LOSS_REGISTRY, BaseCriteria
 from cvnets.utils import logger
 
 

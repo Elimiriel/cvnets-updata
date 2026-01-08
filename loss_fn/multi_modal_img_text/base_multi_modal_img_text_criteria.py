@@ -3,7 +3,7 @@
 
 import argparse
 
-from loss_fn import LOSS_REGISTRY, BaseCriteria
+from cvnets.loss_fn import LOSS_REGISTRY, BaseCriteria
 
 
 @LOSS_REGISTRY.register(name="__base__", type="multi_modal_image_text")

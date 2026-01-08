@@ -10,7 +10,7 @@ import torch
 from torch import Tensor
 from torch import distributed as dist
 
-from common import (
+from cvnets.common import (
     DEFAULT_IMAGE_CHANNELS,
     DEFAULT_IMAGE_HEIGHT,
     DEFAULT_IMAGE_WIDTH,

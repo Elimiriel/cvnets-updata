@@ -10,7 +10,7 @@ from typing import Optional
 
 import requests
 
-from common import TMP_CACHE_LOC, if_test_env
+from cvnets.common import TMP_CACHE_LOC, if_test_env
 from cvnets.utils import logger
 from cvnets.utils.ddp_utils import dist_barrier, is_start_rank_node
 

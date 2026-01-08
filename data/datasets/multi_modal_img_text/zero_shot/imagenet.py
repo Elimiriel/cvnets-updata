@@ -8,14 +8,14 @@ from typing import List
 
 from torchvision.datasets import ImageFolder
 
-from data.datasets.multi_modal_img_text.zero_shot import (
+from cvnets.data.datasets.multi_modal_img_text.zero_shot import (
     ZERO_SHOT_DATASET_REGISTRY,
     BaseZeroShotDataset,
 )
-from data.datasets.multi_modal_img_text.zero_shot.imagenet_class_names import (
+from cvnets.data.datasets.multi_modal_img_text.zero_shot.imagenet_class_names import (
     IMAGENET_CLASS_NAMES,
 )
-from data.datasets.multi_modal_img_text.zero_shot.templates import (
+from cvnets.data.datasets.multi_modal_img_text.zero_shot.templates import (
     generate_text_prompts_clip,
 )
 

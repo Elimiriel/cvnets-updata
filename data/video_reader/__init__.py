@@ -5,7 +5,7 @@
 
 import argparse
 
-from data.video_reader.base_av_reader import BaseAVReader
+from cvnets.data.video_reader.base_av_reader import BaseAVReader
 from cvnets.utils import logger
 from cvnets.utils.ddp_utils import is_master
 from cvnets.utils.registry import Registry

@@ -6,8 +6,8 @@
 import argparse
 import math
 
-from optim.scheduler import SCHEDULER_REGISTRY
-from optim.scheduler.base_scheduler import BaseLRScheduler
+from cvnets.optim.scheduler import SCHEDULER_REGISTRY
+from cvnets.optim.scheduler.base_scheduler import BaseLRScheduler
 
 
 @SCHEDULER_REGISTRY.register("cosine")

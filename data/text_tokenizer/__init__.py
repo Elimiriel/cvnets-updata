@@ -5,7 +5,7 @@
 
 import argparse
 
-from data.text_tokenizer.base_tokenizer import BaseTokenizer
+from cvnets.data.text_tokenizer.base_tokenizer import BaseTokenizer
 from cvnets.utils import logger
 from cvnets.utils.registry import Registry
 

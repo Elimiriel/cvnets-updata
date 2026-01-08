@@ -8,7 +8,7 @@ import argparse
 import pytest
 import torch
 
-from data.transforms import image_pil
+from cvnets.data.transforms import image_pil
 
 
 def test_to_tensor() -> None:

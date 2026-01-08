@@ -5,7 +5,7 @@
 
 import argparse
 
-from data.transforms.base_transforms import BaseTransformation
+from cvnets.data.transforms.base_transforms import BaseTransformation
 from cvnets.utils.registry import Registry
 
 TRANSFORMATIONS_REGISTRY = Registry(

@@ -8,7 +8,7 @@ from typing import Any, Callable, List, Mapping
 import pytest
 import torch
 
-from data.collate_fns.collate_functions import (
+from cvnets.data.collate_fns.collate_functions import (
     default_collate_fn,
     image_classification_data_collate_fn,
     unlabeled_image_data_collate_fn,

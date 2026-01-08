@@ -11,7 +11,7 @@ import numpy as np
 import torch
 import torchaudio
 
-from data.transforms import TRANSFORMATIONS_REGISTRY, BaseTransformation
+from cvnets.data.transforms import TRANSFORMATIONS_REGISTRY, BaseTransformation
 
 
 def _stream_to_wav(x: torch.Tensor, dtype: str, audio_fps: int) -> bytes:

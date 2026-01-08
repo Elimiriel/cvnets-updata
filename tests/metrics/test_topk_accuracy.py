@@ -7,7 +7,7 @@ from typing import Callable
 
 import numpy as np
 
-from metrics.stats import Statistics
+from cvnets.metrics.stats import Statistics
 from tests.metrics.base import sample_classification_outputs, transform_args
 
 

@@ -9,8 +9,8 @@ import torch
 from torch import Tensor
 from torch.nn import functional as F
 
-from loss_fn import LOSS_REGISTRY
-from loss_fn.distillation.base_distillation import BaseDistillationCriteria
+from cvnets.loss_fn import LOSS_REGISTRY
+from cvnets.loss_fn.distillation.base_distillation import BaseDistillationCriteria
 from cvnets.utils import logger
 
 

@@ -5,11 +5,11 @@
 """ImageNetR dataset, a distribution shift of ImageNet."""
 import argparse
 
-from data.datasets import DATASET_REGISTRY
-from data.datasets.classification.base_imagenet_shift_dataset import (
+from cvnets.data.datasets import DATASET_REGISTRY
+from cvnets.data.datasets.classification.base_imagenet_shift_dataset import (
     BaseImageNetShiftDataset,
 )
-from data.datasets.classification.imagenet_synsets import (
+from cvnets.data.datasets.classification.imagenet_synsets import (
     IMAGENET_R_SYNSETS,
     IMAGENET_SYNSETS,
 )

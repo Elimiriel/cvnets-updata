@@ -7,7 +7,7 @@ import sys
 from numbers import Number
 from typing import Dict
 
-from common import is_test_env
+from cvnets.common import is_test_env
 from cvnets.utils import logger
 
 

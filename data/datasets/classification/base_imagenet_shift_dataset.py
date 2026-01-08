@@ -6,7 +6,7 @@
 import argparse
 from typing import Any, Dict, Tuple
 
-from data.datasets.classification.base_image_classification_dataset import (
+from cvnets.data.datasets.classification.base_image_classification_dataset import (
     BaseImageClassificationDataset,
 )
 

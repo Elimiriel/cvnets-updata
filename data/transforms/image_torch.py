@@ -13,7 +13,7 @@ from torch import Tensor
 from torch.nn import functional as F_torch
 from torchvision.transforms import functional as F
 
-from data.transforms import TRANSFORMATIONS_REGISTRY, BaseTransformation
+from cvnets.data.transforms import TRANSFORMATIONS_REGISTRY, BaseTransformation
 from cvnets.utils import logger
 
 

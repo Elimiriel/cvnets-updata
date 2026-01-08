@@ -10,7 +10,7 @@ import torch
 
 sys.path.append("..")
 
-from data.text_tokenizer.clip_tokenizer import ClipTokenizer
+from cvnets.data.text_tokenizer.clip_tokenizer import ClipTokenizer
 
 
 def test_clip_tokenizer():

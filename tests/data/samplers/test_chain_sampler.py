@@ -10,7 +10,7 @@ from typing import List
 import numpy as np
 import pytest
 
-from data.sampler import build_sampler
+from cvnets.data.sampler import build_sampler
 from tests.configs import get_config
 
 

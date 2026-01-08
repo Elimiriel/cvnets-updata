@@ -5,7 +5,7 @@
 
 import argparse
 
-from optim.scheduler.base_scheduler import BaseLRScheduler
+from cvnets.optim.scheduler.base_scheduler import BaseLRScheduler
 from cvnets.utils import logger
 from cvnets.utils.registry import Registry
 

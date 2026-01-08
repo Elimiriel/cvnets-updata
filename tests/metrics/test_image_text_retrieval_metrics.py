@@ -6,7 +6,7 @@
 import pytest
 import torch
 
-from metrics.stats import Statistics
+from cvnets.metrics.stats import Statistics
 from tests.configs import default_training_opts
 
 

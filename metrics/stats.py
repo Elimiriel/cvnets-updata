@@ -14,8 +14,8 @@ import numpy as np
 import torch
 from torch import Tensor
 
-from metrics import METRICS_REGISTRY
-from metrics.metric_base import BaseMetric
+from cvnets.metrics import METRICS_REGISTRY
+from cvnets.metrics.metric_base import BaseMetric
 from cvnets.utils import logger
 from cvnets.utils.object_utils import apply_recursively, flatten_to_dict
 

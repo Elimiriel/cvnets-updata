@@ -12,8 +12,8 @@ import torch
 from sklearn.metrics import average_precision_score
 from torch.nn import functional as F
 
-from metrics import METRICS_REGISTRY
-from metrics.metric_base import EpochMetric
+from cvnets.metrics import METRICS_REGISTRY
+from cvnets.metrics.metric_base import EpochMetric
 from cvnets.utils import logger
 from cvnets.utils.ddp_utils import is_master
 from cvnets.utils.registry import Registry

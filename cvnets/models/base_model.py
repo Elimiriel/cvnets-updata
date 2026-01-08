@@ -15,7 +15,7 @@ from torch import nn
 from cvnets.layers import norm_layers_tuple
 from cvnets.misc.common import get_tensor_sizes, parameter_list
 from cvnets.misc.init_utils import initialize_weights
-from options.parse_args import JsonValidator
+from cvnets.options.parse_args import JsonValidator
 from cvnets.utils import logger
 from cvnets.utils.common_utils import check_frozen_norm_layer
 from cvnets.utils.ddp_utils import is_master

@@ -8,9 +8,9 @@ from typing import List, Optional
 
 import torch
 
-from common import TMP_RES_FOLDER
+from cvnets.common import TMP_RES_FOLDER
 from cvnets import get_model
-from options.opts import get_conversion_arguments
+from cvnets.options.opts import get_conversion_arguments
 from cvnets.utils import logger
 from cvnets.utils.checkpoint_utils import CHECKPOINT_EXTN
 from cvnets.utils.pytorch_to_coreml import convert_pytorch_to_coreml
