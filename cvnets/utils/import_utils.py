@@ -27,14 +27,7 @@ def import_modules_from_folder(
             also import `LIBRARY_ROOT/{extra_root}/{folder_name}/**/*.py` modules.
     """
     if not LIBRARY_ROOT.joinpath(folder_name).exists():
-        if LIBRARY_ROOT.joinpath("internal", folder_name).exists():
-            logger.warning(
-                f"{folder_name} lazy loading by cvnets default."
-            )
-        else:
-            logger.error(
-                f"{folder_name} doesn't exist in the public library root directory."
-            )
+        return
 
     for base_dir in [".", *extra_roots]:
         for path in LIBRARY_ROOT.glob(os.path.join(base_dir, folder_name, "**/*.py")):
