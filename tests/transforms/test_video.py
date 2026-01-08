@@ -10,13 +10,13 @@ from typing import Dict, Tuple
 import pytest
 import torch
 
-from data.transforms.video import (
+from cvnets.data.transforms.video import (
     CropByBoundingBox,
     SaveInputs,
     ShuffleAudios,
     _resize_fn,
 )
-from data.video_reader.pyav_reader import PyAVReader
+from cvnets.data.video_reader.pyav_reader import PyAVReader
 from tests.configs import get_config
 
 

@@ -12,12 +12,12 @@ from torch import Tensor
 
 from cvnets.anchor_generator import build_anchor_generator
 from cvnets.matcher_det import build_matcher
-from data.collate_fns import COLLATE_FN_REGISTRY
-from data.datasets import DATASET_REGISTRY
-from data.datasets.detection.coco_base import COCODetection
-from data.transforms import image_pil as T
-from data.transforms.common import Compose
-from utils import logger
+from cvnets.data.collate_fns import COLLATE_FN_REGISTRY
+from cvnets.data.datasets import DATASET_REGISTRY
+from cvnets.data.datasets.detection.coco_base import COCODetection
+from cvnets.data.transforms import image_pil as T
+from cvnets.data.transforms.common import Compose
+from cvnets.utils import logger
 
 
 @DATASET_REGISTRY.register(name="coco_ssd", type="detection")

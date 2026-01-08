@@ -9,11 +9,11 @@ from typing import List, Mapping, Tuple, Union
 import torch
 from torch import Tensor
 
-from data.collate_fns import COLLATE_FN_REGISTRY
-from data.datasets import DATASET_REGISTRY
-from data.datasets.detection.coco_base import COCODetection
-from data.transforms import image_pil as T
-from data.transforms.common import Compose
+from cvnets.data.collate_fns import COLLATE_FN_REGISTRY
+from cvnets.data.datasets import DATASET_REGISTRY
+from cvnets.data.datasets.detection.coco_base import COCODetection
+from cvnets.data.transforms import image_pil as T
+from cvnets.data.transforms.common import Compose
 
 
 @DATASET_REGISTRY.register(name="coco_mask_rcnn", type="detection")

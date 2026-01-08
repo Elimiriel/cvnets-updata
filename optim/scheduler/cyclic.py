@@ -8,9 +8,9 @@ import math
 
 import numpy as np
 
-from optim.scheduler import SCHEDULER_REGISTRY
-from optim.scheduler.base_scheduler import BaseLRScheduler
-from utils import logger
+from cvnets.optim.scheduler import SCHEDULER_REGISTRY
+from cvnets.optim.scheduler.base_scheduler import BaseLRScheduler
+from cvnets.utils import logger
 
 SUPPORTED_LAST_CYCLES = ["cosine", "linear"]
 

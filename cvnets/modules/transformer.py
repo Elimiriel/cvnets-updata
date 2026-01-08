@@ -20,7 +20,7 @@ from cvnets.layers import (
 )
 from cvnets.layers.activation import build_activation_layer
 from cvnets.modules import BaseModule
-from utils import logger
+from cvnets.utils import logger
 
 
 class TransformerEncoder(BaseModule):

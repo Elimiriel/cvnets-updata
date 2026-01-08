@@ -9,9 +9,9 @@ from typing import Any, Dict, Union
 import torch
 from torch import Tensor
 
-from metrics import METRICS_REGISTRY
-from metrics.metric_base import AverageMetric
-from utils import logger
+from cvnets.metrics import METRICS_REGISTRY
+from cvnets.metrics.metric_base import AverageMetric
+from cvnets.utils import logger
 
 
 @METRICS_REGISTRY.register(name="loss")

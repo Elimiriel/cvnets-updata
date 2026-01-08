@@ -11,18 +11,18 @@ import torch
 from PIL import Image
 from torch import Tensor
 
-from data.collate_fns import COLLATE_FN_REGISTRY
-from data.datasets.dataset_base import BaseImageDataset
-from data.datasets.multi_modal_img_text.zero_shot import (
+from cvnets.data.collate_fns import COLLATE_FN_REGISTRY
+from cvnets.data.datasets.dataset_base import BaseImageDataset
+from cvnets.data.datasets.multi_modal_img_text.zero_shot import (
     BaseZeroShotDataset,
     build_zero_shot_dataset,
 )
-from data.datasets.utils.text import caption_preprocessing
-from data.text_tokenizer import build_tokenizer
-from data.transforms import image_pil as T
-from data.transforms.common import Compose
-from utils import logger
-from utils.ddp_utils import is_master, is_start_rank_node
+from cvnets.data.datasets.utils.text import caption_preprocessing
+from cvnets.data.text_tokenizer import build_tokenizer
+from cvnets.data.transforms import image_pil as T
+from cvnets.data.transforms.common import Compose
+from cvnets.utils import logger
+from cvnets.utils.ddp_utils import is_master, is_start_rank_node
 
 
 class BaseMultiModalImgText(BaseImageDataset):

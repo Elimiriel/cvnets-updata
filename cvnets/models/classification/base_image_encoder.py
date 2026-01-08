@@ -9,12 +9,12 @@ import torch
 from torch import Tensor, nn
 from torch.utils.checkpoint import checkpoint as gradient_checkpoint_fn
 
-from common import is_test_env
+from cvnets.common import is_test_env
 from cvnets.layers import LinearLayer
 from cvnets.misc.init_utils import initialize_fc_layer
 from cvnets.models import MODEL_REGISTRY, BaseAnyNNModel
 from cvnets.neural_augmentor import build_neural_augmentor
-from utils import logger
+from cvnets.utils import logger
 
 
 @MODEL_REGISTRY.register(name="__base__", type="classification")

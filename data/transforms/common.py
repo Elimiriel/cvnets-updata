@@ -4,7 +4,7 @@
 #
 from typing import Dict, List
 
-from data.transforms import TRANSFORMATIONS_REGISTRY, BaseTransformation
+from cvnets.data.transforms import TRANSFORMATIONS_REGISTRY, BaseTransformation
 
 
 @TRANSFORMATIONS_REGISTRY.register(name="compose", type="common")

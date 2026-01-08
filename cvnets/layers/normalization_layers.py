@@ -7,7 +7,7 @@ import math
 from torch import nn
 
 from cvnets.layers.normalization import NORM_LAYER_CLS, build_normalization_layer
-from utils import logger
+from cvnets.utils import logger
 
 norm_layers_tuple = tuple(NORM_LAYER_CLS)
 

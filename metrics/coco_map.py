@@ -16,11 +16,11 @@ from torch import Tensor
 from torch.nn import functional as F
 
 from cvnets.models.detection import DetectionPredTuple
-from metrics import METRICS_REGISTRY
-from metrics.metric_base import BaseMetric
-from utils import logger
-from utils.ddp_utils import is_master
-from utils.tensor_utils import all_gather_list
+from cvnets.metrics import METRICS_REGISTRY
+from cvnets.metrics.metric_base import BaseMetric
+from cvnets.utils import logger
+from cvnets.utils.ddp_utils import is_master
+from cvnets.utils.tensor_utils import all_gather_list
 
 
 @METRICS_REGISTRY.register(name="coco_map")

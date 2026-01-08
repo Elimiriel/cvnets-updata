@@ -8,10 +8,10 @@ from typing import Dict, List
 
 import torch.nn
 
-from optim.base_optim import BaseOptim
-from utils import logger
-from utils.common_utils import unwrap_model_fn
-from utils.registry import Registry
+from cvnets.optim.base_optim import BaseOptim
+from cvnets.utils import logger
+from cvnets.utils.common_utils import unwrap_model_fn
+from cvnets.utils.registry import Registry
 
 OPTIM_REGISTRY = Registry(
     registry_name="optimizer_registry",

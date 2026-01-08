@@ -7,7 +7,7 @@ from typing import Any, Union
 
 import pytest
 
-from data.datasets.dataset_base import BaseDataset
+from cvnets.data.datasets.dataset_base import BaseDataset
 from tests.configs import get_config
 from tests.data.datasets.classification.mock_imagenet import MockImageNetDataset
 

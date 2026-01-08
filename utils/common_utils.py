@@ -12,9 +12,9 @@ import torch
 from packaging import version
 from torch import Tensor
 
-from common import MIN_TORCH_VERSION
-from utils import logger
-from utils.ddp_utils import is_master
+from cvnets.common import MIN_TORCH_VERSION
+from cvnets.utils import logger
+from cvnets.utils.ddp_utils import is_master
 
 
 def unwrap_model_fn(model: torch.nn.Module) -> torch.nn.Module:

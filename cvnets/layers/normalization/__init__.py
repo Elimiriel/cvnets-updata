@@ -11,7 +11,7 @@ from typing import Optional
 import torch
 
 from cvnets.layers.identity import Identity
-from utils import logger
+from cvnets.utils import logger
 
 SUPPORTED_NORM_FNS = []
 NORM_LAYER_REGISTRY = {}

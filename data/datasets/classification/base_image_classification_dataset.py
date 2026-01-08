@@ -8,12 +8,12 @@ from typing import Any, Dict, Tuple, Union
 import torch
 from torchvision.datasets import ImageFolder
 
-from data.datasets.dataset_base import BaseImageDataset
-from data.datasets.utils.common import select_samples_by_category
-from data.transforms import image_pil
-from data.transforms.common import Compose
-from utils import logger
-from utils.ddp_utils import is_master
+from cvnets.data.datasets.dataset_base import BaseImageDataset
+from cvnets.data.datasets.utils.common import select_samples_by_category
+from cvnets.data.transforms import image_pil
+from cvnets.data.transforms.common import Compose
+from cvnets.utils import logger
+from cvnets.utils.ddp_utils import is_master
 
 
 class BaseImageClassificationDataset(BaseImageDataset, ImageFolder):

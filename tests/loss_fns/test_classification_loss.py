@@ -7,8 +7,8 @@ from typing import Mapping
 import pytest
 import torch
 
-from loss_fn.classification.binary_cross_entropy import BinaryCrossEntropy
-from loss_fn.classification.cross_entropy import CrossEntropy
+from cvnets.loss_fn.classification.binary_cross_entropy import BinaryCrossEntropy
+from cvnets.loss_fn.classification.cross_entropy import CrossEntropy
 
 
 @pytest.mark.parametrize("batch_size", [1, 2])

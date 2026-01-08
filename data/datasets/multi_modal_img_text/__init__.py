@@ -5,10 +5,10 @@
 
 import argparse
 
-from data.datasets.multi_modal_img_text.base_multi_modal_img_text import (
+from cvnets.data.datasets.multi_modal_img_text.base_multi_modal_img_text import (
     BaseMultiModalImgText,
 )
-from data.datasets.multi_modal_img_text.zero_shot import arguments_zero_shot_dataset
+from cvnets.data.datasets.multi_modal_img_text.zero_shot import arguments_zero_shot_dataset
 
 
 def arguments_multi_modal_img_text(

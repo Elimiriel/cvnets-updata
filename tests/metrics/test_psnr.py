@@ -9,7 +9,7 @@ from typing import Callable
 import numpy as np
 import torch
 
-from metrics.stats import Statistics
+from cvnets.metrics.stats import Statistics
 from tests.metrics.base import transform_args
 
 

@@ -6,7 +6,7 @@
 import sys
 from typing import Dict, Optional
 
-from data.transforms.base_transforms import BaseTransformation
+from cvnets.data.transforms.base_transforms import BaseTransformation
 
 try:
     import decord
@@ -16,9 +16,9 @@ except ImportError:
 import av
 import torch
 
-from data.video_reader import VIDEO_READER_REGISTRY
-from data.video_reader.pyav_reader import BaseAVReader
-from utils import logger
+from cvnets.data.video_reader import VIDEO_READER_REGISTRY
+from cvnets.data.video_reader.pyav_reader import BaseAVReader
+from cvnets.utils import logger
 
 
 @VIDEO_READER_REGISTRY.register(name="decord")

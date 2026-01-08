@@ -8,8 +8,8 @@ import argparse
 from torch import Tensor
 from torch.nn import functional as F
 
-from loss_fn import LOSS_REGISTRY
-from loss_fn.classification.base_classification_criteria import (
+from cvnets.loss_fn import LOSS_REGISTRY
+from cvnets.loss_fn.classification.base_classification_criteria import (
     BaseClassificationCriteria,
 )
 

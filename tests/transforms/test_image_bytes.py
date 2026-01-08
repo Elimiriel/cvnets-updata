@@ -9,7 +9,7 @@ from typing import Tuple
 import pytest
 import torch
 
-from data.transforms import image_bytes
+from cvnets.data.transforms import image_bytes
 
 
 @pytest.mark.parametrize(

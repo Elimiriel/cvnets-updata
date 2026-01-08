@@ -13,11 +13,11 @@ from pycocotools import mask as coco_mask
 from pycocotools.coco import COCO
 from torch import Tensor
 
-from data.datasets import DATASET_REGISTRY
-from data.datasets.detection.base_detection import BaseDetectionDataset
-from data.transforms import image_pil as T
-from data.transforms.common import Compose
-from utils import logger
+from cvnets.data.datasets import DATASET_REGISTRY
+from cvnets.data.datasets.detection.base_detection import BaseDetectionDataset
+from cvnets.data.transforms import image_pil as T
+from cvnets.data.transforms.common import Compose
+from cvnets.utils import logger
 
 
 @DATASET_REGISTRY.register(name="coco", type="detection")

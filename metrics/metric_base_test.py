@@ -8,7 +8,7 @@ from typing import Any, Dict, Union
 import torch
 from torch import Tensor
 
-from metrics.metric_base import AverageMetric
+from cvnets.metrics.metric_base import AverageMetric
 
 
 class DummyMetric(AverageMetric):

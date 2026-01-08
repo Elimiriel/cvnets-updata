@@ -6,7 +6,7 @@
 import numpy as np
 import pytest
 
-from data.datasets.utils import common
+from cvnets.data.datasets.utils import common
 
 
 def _test_data():

@@ -8,8 +8,8 @@ from typing import Callable, Dict, Mapping, Optional, Union
 
 from torch.utils.data.sampler import Sampler
 
-from data.sampler.base_sampler import BaseSampler, BaseSamplerDDP
-from utils.registry import Registry
+from cvnets.data.sampler.base_sampler import BaseSampler, BaseSamplerDDP
+from cvnets.utils.registry import Registry
 
 SAMPLER_REGISTRY = Registry(
     registry_name="data_samplers",

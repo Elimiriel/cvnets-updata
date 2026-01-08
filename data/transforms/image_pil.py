@@ -15,10 +15,10 @@ from PIL import Image, ImageFilter
 from torchvision import transforms as T
 from torchvision.transforms import functional as F
 
-from data.transforms import TRANSFORMATIONS_REGISTRY, BaseTransformation
-from data.transforms.utils import jaccard_numpy, setup_size
-from options.parse_args import JsonValidator
-from utils import logger
+from cvnets.data.transforms import TRANSFORMATIONS_REGISTRY, BaseTransformation
+from cvnets.data.transforms.utils import jaccard_numpy, setup_size
+from cvnets.options.parse_args import JsonValidator
+from cvnets.utils import logger
 
 INTERPOLATION_MODE_MAP = {
     "nearest": T.InterpolationMode.NEAREST,

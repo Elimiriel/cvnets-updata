@@ -10,13 +10,13 @@ import torch
 from torch import Tensor
 from torch import distributed as dist
 
-from common import (
+from cvnets.common import (
     DEFAULT_IMAGE_CHANNELS,
     DEFAULT_IMAGE_HEIGHT,
     DEFAULT_IMAGE_WIDTH,
     DEFAULT_VIDEO_FRAMES,
 )
-from utils.third_party.ddp_functional_utils import (
+from cvnets.utils.third_party.ddp_functional_utils import (
     all_gather as all_gather_with_backward,
 )
 

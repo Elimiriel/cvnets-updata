@@ -6,7 +6,7 @@ import argparse
 import pytest
 import torch
 
-from loss_fn.multi_modal_img_text.contrastive_loss_clip import ContrastiveLossClip
+from cvnets.loss_fn.multi_modal_img_text.contrastive_loss_clip import ContrastiveLossClip
 
 
 @pytest.mark.parametrize("batch_size", [1, 2])

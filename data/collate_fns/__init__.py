@@ -5,8 +5,8 @@
 
 import argparse
 
-from utils import logger
-from utils.registry import Registry
+from cvnets.utils import logger
+from cvnets.utils.registry import Registry
 
 COLLATE_FN_REGISTRY = Registry(
     "collate_fn",

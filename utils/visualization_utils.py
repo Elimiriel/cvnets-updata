@@ -19,8 +19,8 @@ import numpy as np
 from matplotlib.colors import hsv_to_rgb
 from torch import Tensor
 
-from utils import logger
-from utils.color_map import Colormap
+from cvnets.utils import logger
+from cvnets.utils.color_map import Colormap
 
 LABEL_COLOR = [255, 255, 255]
 TEXT_THICKNESS = 1

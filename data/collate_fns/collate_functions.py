@@ -9,8 +9,8 @@ import torch
 from torch import Tensor
 from torch.utils.data import default_collate
 
-from data.collate_fns import COLLATE_FN_REGISTRY
-from utils import logger
+from cvnets.data.collate_fns import COLLATE_FN_REGISTRY
+from cvnets.utils import logger
 
 
 @COLLATE_FN_REGISTRY.register(name="pytorch_default_collate_fn")

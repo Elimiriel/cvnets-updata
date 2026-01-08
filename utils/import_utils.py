@@ -7,8 +7,8 @@ import importlib
 import os
 from typing import Sequence
 
-from common import LIBRARY_ROOT
-from utils import logger
+from cvnets.common import LIBRARY_ROOT
+from cvnets.utils import logger
 
 
 def import_modules_from_folder(

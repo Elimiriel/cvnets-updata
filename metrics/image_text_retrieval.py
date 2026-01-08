@@ -10,11 +10,11 @@ from typing import Any, Dict, Tuple, Union
 import torch
 from torch import Tensor
 
-from metrics import METRICS_REGISTRY
-from metrics.metric_base import BaseMetric
-from metrics.retrieval_cmc import DISTANCE_REGISTRY
-from utils import logger
-from utils.tensor_utils import all_gather_list
+from cvnets.metrics import METRICS_REGISTRY
+from cvnets.metrics.metric_base import BaseMetric
+from cvnets.metrics.retrieval_cmc import DISTANCE_REGISTRY
+from cvnets.utils import logger
+from cvnets.utils.tensor_utils import all_gather_list
 
 
 @METRICS_REGISTRY.register("image_text_retrieval")

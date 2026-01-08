@@ -13,14 +13,14 @@ import torch
 import torch.nn.functional as F
 from torch import Tensor
 
-from data.transforms import BaseTransformation
-from data.transforms import image_pil as T
-from data.transforms.common import Compose
-from options.utils import (
+from cvnets.data.transforms import BaseTransformation
+from cvnets.data.transforms import image_pil as T
+from cvnets.data.transforms.common import Compose
+from cvnets.options.utils import (
     extend_selected_args_with_prefix,
     extract_opts_with_prefix_replacement,
 )
-from utils import logger
+from cvnets.utils import logger
 
 
 class VideoDurationDoesNotMatchAudioDurationError(AssertionError):

@@ -13,8 +13,8 @@ from cvnets.image_projection_layers import (
     IMAGE_PROJECTION_HEAD_REGISTRY,
     BaseImageProjectionHead,
 )
-from utils import logger
-from utils.ddp_utils import is_master
+from cvnets.utils import logger
+from cvnets.utils.ddp_utils import is_master
 
 
 @IMAGE_PROJECTION_HEAD_REGISTRY.register(name="simple_projection_nc2nc")

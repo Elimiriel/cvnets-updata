@@ -3,7 +3,7 @@
 # Copyright (C) 2023 Apple Inc. All Rights Reserved.
 #
 
-from utils.object_utils import apply_recursively, flatten_to_dict
+from cvnets.utils.object_utils import apply_recursively, flatten_to_dict
 
 
 def test_apply_on_values():

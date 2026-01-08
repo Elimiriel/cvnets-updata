@@ -8,13 +8,13 @@ from typing import List, Optional
 import torch
 
 from cvnets import get_model
-from data import create_test_loader
-from engine import Trainer
-from loss_fn import build_loss_fn
-from options.opts import get_loss_landscape_args
-from utils import logger, resources
-from utils.common_utils import create_directories, device_setup
-from utils.ddp_utils import distributed_init, is_master
+from cvnets.data import create_test_loader
+from cvnets.engine import Trainer
+from cvnets.loss_fn import build_loss_fn
+from cvnets.options.opts import get_loss_landscape_args
+from cvnets.utils import logger, resources
+from cvnets.utils.common_utils import create_directories, device_setup
+from cvnets.utils.ddp_utils import distributed_init, is_master
 
 
 def main(opts, **kwargs):

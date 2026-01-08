@@ -3,7 +3,7 @@
 # Copyright (C) 2023 Apple Inc. All Rights Reserved.
 #
 
-from common import is_test_env
+from cvnets.common import is_test_env
 
 
 class UnrecognizedYamlConfigEntry(Warning):

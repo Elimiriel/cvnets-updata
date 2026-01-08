@@ -12,8 +12,8 @@ from typing import Callable, Dict, List, Optional, Union
 import torch
 import torchaudio
 
-from data.transforms import TRANSFORMATIONS_REGISTRY, BaseTransformation
-from data.transforms.audio_aux import mfccs
+from cvnets.data.transforms import TRANSFORMATIONS_REGISTRY, BaseTransformation
+from cvnets.data.transforms.audio_aux import mfccs
 
 
 @TRANSFORMATIONS_REGISTRY.register(name="audio_gain", type="audio")

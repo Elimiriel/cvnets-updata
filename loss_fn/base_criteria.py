@@ -9,7 +9,7 @@ from typing import Any
 
 from torch import nn
 
-from utils import logger
+from cvnets.utils import logger
 
 
 class BaseCriteria(nn.Module, abc.ABC):

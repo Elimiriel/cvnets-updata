@@ -6,20 +6,20 @@
 import argparse
 from typing import List, Optional
 
-from common import SUPPORTED_MODALITIES
+from cvnets.common import SUPPORTED_MODALITIES
 from cvnets import modeling_arguments
-from data.collate_fns import arguments_collate_fn
-from data.datasets import arguments_dataset
-from data.sampler import add_sampler_arguments
-from data.text_tokenizer import arguments_tokenizer
-from data.transforms import arguments_augmentation
-from data.video_reader import arguments_video_reader
-from loss_fn import add_loss_fn_arguments
-from metrics import METRICS_REGISTRY, arguments_stats
-from optim import arguments_optimizer
-from optim.scheduler import arguments_scheduler
-from options.utils import load_config_file
-from utils import logger
+from cvnets.data.collate_fns import arguments_collate_fn
+from cvnets.data.datasets import arguments_dataset
+from cvnets.data.sampler import add_sampler_arguments
+from cvnets.data.text_tokenizer import arguments_tokenizer
+from cvnets.data.transforms import arguments_augmentation
+from cvnets.data.video_reader import arguments_video_reader
+from cvnets.loss_fn import add_loss_fn_arguments
+from cvnets.metrics import METRICS_REGISTRY, arguments_stats
+from cvnets.optim import arguments_optimizer
+from cvnets.optim.scheduler import arguments_scheduler
+from cvnets.options.utils import load_config_file
+from cvnets.utils import logger
 
 
 class ParseKwargs(argparse.Action):

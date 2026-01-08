@@ -7,11 +7,11 @@ import argparse
 import random
 from typing import Iterator, Tuple
 
-from common import DEFAULT_IMAGE_HEIGHT, DEFAULT_IMAGE_WIDTH
-from data.sampler import SAMPLER_REGISTRY
-from data.sampler.base_sampler import BaseSampler, BaseSamplerDDP
-from data.sampler.utils import image_batch_pairs
-from utils import logger
+from cvnets.common import DEFAULT_IMAGE_HEIGHT, DEFAULT_IMAGE_WIDTH
+from cvnets.data.sampler import SAMPLER_REGISTRY
+from cvnets.data.sampler.base_sampler import BaseSampler, BaseSamplerDDP
+from cvnets.data.sampler.utils import image_batch_pairs
+from cvnets.utils import logger
 
 
 @SAMPLER_REGISTRY.register(name="variable_batch_sampler")

@@ -6,8 +6,8 @@ You can either create a new dataset class from scratch or extend one of the exis
 
 This class decorator takes allows you to set a `name` and `task` type for the dataset class:
 ```python
-from data.datasets import DATASET_REGISTRY
-from data.datasets.dataset_base import BaseImageDataset
+from cvnets.data.datasets import DATASET_REGISTRY
+from cvnets.data.datasets.dataset_base import BaseImageDataset
 
 @DATASET_REGISTRY.register(name="ade20k", type="segmentation")
 class ADE20KDataset(BaseImageDataset):
@@ -41,8 +41,8 @@ The `ImagenetDataset` follows the ImageFolder class in `torchvision.datasets.ima
 you can extend ImageNet and only change the parts that are needed, such as including your amazing new transforms:
 
 ```python
-from data.datasets import DATASET_REGISTRY
-from data.datasets.classification.imagenet import ImagenetDataset
+from cvnets.data.datasets import DATASET_REGISTRY
+from cvnets.data.datasets.classification.imagenet import ImagenetDataset
 
 @DATASET_REGISTRY.register(name="my-new-dataset", type="classification")
 class AmazingDataset(ImagenetDataset):

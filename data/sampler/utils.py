@@ -7,7 +7,7 @@ from typing import List, Optional, Tuple, Union
 
 import numpy as np
 
-from utils.math_utils import make_divisible
+from cvnets.utils.math_utils import make_divisible
 
 
 def image_batch_pairs(

@@ -7,8 +7,8 @@ from typing import List, Optional, Union
 
 from torch.utils.data import DataLoader
 
-from data.datasets.dataset_base import BaseDataset
-from data.sampler import Sampler
+from cvnets.data.datasets.dataset_base import BaseDataset
+from cvnets.data.sampler import Sampler
 
 
 class CVNetsDataLoader(DataLoader):

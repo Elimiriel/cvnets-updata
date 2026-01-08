@@ -11,7 +11,7 @@ from torch import Tensor, nn
 from torch.nn import functional as F
 
 from cvnets.layers.base_layer import BaseLayer
-from utils import logger
+from cvnets.utils import logger
 
 
 class LinearLayer(BaseLayer):

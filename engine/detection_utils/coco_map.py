@@ -13,7 +13,7 @@ from pycocotools import mask as maskUtils
 from pycocotools.coco import COCO
 from pycocotools.cocoeval import COCOeval
 
-from utils import logger
+from cvnets.utils import logger
 
 
 def coco_evaluation(

@@ -15,20 +15,20 @@ from torch.nn import functional as F
 from torchvision.transforms import functional as F_vision
 from tqdm import tqdm
 
-from common import SUPPORTED_IMAGE_EXTNS
+from cvnets.common import SUPPORTED_IMAGE_EXTNS
 from cvnets import get_model
 from cvnets.models.detection import DetectionPredTuple
-from data import create_test_loader
-from data.datasets.detection.coco_base import COCODetection
-from engine.detection_utils.coco_map import compute_quant_scores
-from engine.utils import autocast_fn, get_batch_size
-from options.opts import get_training_arguments
-from utils import logger, resources
-from utils.common_utils import create_directories, device_setup
-from utils.ddp_utils import is_master
-from utils.download_utils import get_local_path
-from utils.tensor_utils import image_size_from_opts, to_numpy
-from utils.visualization_utils import draw_bounding_boxes
+from cvnets.data import create_test_loader
+from cvnets.data.datasets.detection.coco_base import COCODetection
+from cvnets.engine.detection_utils.coco_map import compute_quant_scores
+from cvnets.engine.utils import autocast_fn, get_batch_size
+from cvnets.options.opts import get_training_arguments
+from cvnets.utils import logger, resources
+from cvnets.utils.common_utils import create_directories, device_setup
+from cvnets.utils.ddp_utils import is_master
+from cvnets.utils.download_utils import get_local_path
+from cvnets.utils.tensor_utils import image_size_from_opts, to_numpy
+from cvnets.utils.visualization_utils import draw_bounding_boxes
 
 # Evaluation on MSCOCO detection task
 object_names = COCODetection.class_names()

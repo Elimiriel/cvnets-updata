@@ -8,7 +8,7 @@ import sys
 
 sys.path.append("../..")
 
-from loss_fn.composite_loss import CompositeLoss
+from cvnets.loss_fn.composite_loss import CompositeLoss
 
 
 def test_composite_loss() -> None:

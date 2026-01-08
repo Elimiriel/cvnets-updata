@@ -12,7 +12,7 @@ from torch.nn import functional as F
 from cvnets.layers.base_layer import BaseLayer
 from cvnets.layers.dropout import Dropout
 from cvnets.layers.linear_layer import LinearLayer
-from utils import logger
+from cvnets.utils import logger
 
 
 class MultiHeadAttention(BaseLayer):

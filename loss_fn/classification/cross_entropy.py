@@ -8,11 +8,11 @@ import argparse
 from torch import Tensor
 from torch.nn import functional as F
 
-from loss_fn import LOSS_REGISTRY
-from loss_fn.classification.base_classification_criteria import (
+from cvnets.loss_fn import LOSS_REGISTRY
+from cvnets.loss_fn.classification.base_classification_criteria import (
     BaseClassificationCriteria,
 )
-from loss_fn.utils.class_weighting import compute_class_weights
+from cvnets.loss_fn.utils.class_weighting import compute_class_weights
 
 
 @LOSS_REGISTRY.register(name="cross_entropy", type="classification")

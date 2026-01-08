@@ -13,7 +13,7 @@ from cvnets.models import MODEL_REGISTRY
 from cvnets.models.classification.base_image_encoder import BaseImageEncoder
 from cvnets.models.classification.config.mobilenetv2 import get_configuration
 from cvnets.modules import InvertedResidual
-from utils.math_utils import bound_fn, make_divisible
+from cvnets.utils.math_utils import bound_fn, make_divisible
 
 
 @MODEL_REGISTRY.register(name="mobilenetv2", type="classification")

@@ -9,7 +9,7 @@ from typing import Optional
 import numpy as np
 import pytest
 
-from data.sampler import build_sampler
+from cvnets.data.sampler import build_sampler
 from tests.configs import get_config
 
 N_DATA_SAMPLES = 1000

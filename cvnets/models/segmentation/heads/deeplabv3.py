@@ -13,7 +13,7 @@ from cvnets.misc.init_utils import initialize_weights
 from cvnets.models import MODEL_REGISTRY
 from cvnets.models.segmentation.heads.base_seg_head import BaseSegHead
 from cvnets.modules import ASPP
-from options.parse_args import JsonValidator
+from cvnets.options.parse_args import JsonValidator
 
 
 @MODEL_REGISTRY.register(name="deeplabv3", type="segmentation_head")

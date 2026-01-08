@@ -9,9 +9,9 @@ from typing import Any, Dict
 import torch
 from torch import Tensor
 
-from loss_fn import LOSS_REGISTRY
-from loss_fn.detection.base_detection_criteria import BaseDetectionCriteria
-from utils import logger
+from cvnets.loss_fn import LOSS_REGISTRY
+from cvnets.loss_fn.detection.base_detection_criteria import BaseDetectionCriteria
+from cvnets.utils import logger
 
 
 @LOSS_REGISTRY.register(name="mask_rcnn_loss", type="detection")

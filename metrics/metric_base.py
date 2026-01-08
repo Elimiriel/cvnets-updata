@@ -12,8 +12,8 @@ import numpy as np
 import torch
 from torch import Tensor
 
-from utils import logger
-from utils.tensor_utils import (
+from cvnets.utils import logger
+from cvnets.utils.tensor_utils import (
     all_gather_list,
     reduce_tensor_sum,
     tensor_to_python_float,

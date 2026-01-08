@@ -6,7 +6,7 @@
 import numpy as np
 import torch
 
-from metrics.stats import Statistics
+from cvnets.metrics.stats import Statistics
 
 
 def test_gather_loss():

@@ -7,7 +7,7 @@ import os
 import torch
 import torch.distributed as dist
 
-from utils.common_utils import unwrap_model_fn
+from cvnets.utils.common_utils import unwrap_model_fn
 
 
 def check_models(

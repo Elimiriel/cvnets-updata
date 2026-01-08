@@ -5,8 +5,8 @@
 
 import argparse
 
-from data.datasets import DATASET_REGISTRY
-from data.datasets.classification.base_image_classification_dataset import (
+from cvnets.data.datasets import DATASET_REGISTRY
+from cvnets.data.datasets.classification.base_image_classification_dataset import (
     BaseImageClassificationDataset,
 )
 

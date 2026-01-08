@@ -6,19 +6,19 @@
 import argparse
 from typing import Optional, Tuple
 
-from data.datasets.classification.base_image_classification_dataset import (
+from cvnets.data.datasets.classification.base_image_classification_dataset import (
     BaseImageClassificationDataset,
 )
-from data.datasets.classification.base_imagenet_shift_dataset import (
+from cvnets.data.datasets.classification.base_imagenet_shift_dataset import (
     BaseImageNetShiftDataset,
 )
-from data.datasets.dataset_base import BaseDataset, BaseImageDataset, BaseVideoDataset
-from data.datasets.detection.base_detection import BaseDetectionDataset
-from data.datasets.multi_modal_img_text import arguments_multi_modal_img_text
-from data.datasets.segmentation.base_segmentation import BaseImageSegmentationDataset
-from utils import logger
-from utils.ddp_utils import is_master
-from utils.registry import Registry
+from cvnets.data.datasets.dataset_base import BaseDataset, BaseImageDataset, BaseVideoDataset
+from cvnets.data.datasets.detection.base_detection import BaseDetectionDataset
+from cvnets.data.datasets.multi_modal_img_text import arguments_multi_modal_img_text
+from cvnets.data.datasets.segmentation.base_segmentation import BaseImageSegmentationDataset
+from cvnets.utils import logger
+from cvnets.utils.ddp_utils import is_master
+from cvnets.utils.registry import Registry
 
 DATASET_REGISTRY = Registry(
     registry_name="dataset_registry",

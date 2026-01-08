@@ -10,12 +10,12 @@ import torch
 from torch.cuda.amp import autocast
 
 from cvnets import get_model
-from engine.utils import autocast_fn
-from options.opts import get_benchmarking_arguments
-from utils import logger
-from utils.common_utils import device_setup
-from utils.pytorch_to_coreml import convert_pytorch_to_coreml
-from utils.tensor_utils import create_rand_tensor
+from cvnets.engine.utils import autocast_fn
+from cvnets.options.opts import get_benchmarking_arguments
+from cvnets.utils import logger
+from cvnets.utils.common_utils import device_setup
+from cvnets.utils.pytorch_to_coreml import convert_pytorch_to_coreml
+from cvnets.utils.tensor_utils import create_rand_tensor
 
 
 def cpu_timestamp(*args, **kwargs):

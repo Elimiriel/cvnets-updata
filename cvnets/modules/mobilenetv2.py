@@ -10,7 +10,7 @@ from torch import Tensor, nn
 from cvnets.layers import ConvLayer2d
 from cvnets.layers.activation import build_activation_layer
 from cvnets.modules import BaseModule, SqueezeExcitation
-from utils.math_utils import make_divisible
+from cvnets.utils.math_utils import make_divisible
 
 
 class InvertedResidualSE(BaseModule):

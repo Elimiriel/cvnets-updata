@@ -5,7 +5,7 @@
 
 import argparse
 
-from utils import logger
+from cvnets.utils import logger
 
 
 class BaseOptim(object):

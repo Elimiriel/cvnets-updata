@@ -6,10 +6,10 @@
 import argparse
 import os
 
-from data.datasets.multi_modal_img_text.zero_shot.base_zero_shot import (
+from cvnets.data.datasets.multi_modal_img_text.zero_shot.base_zero_shot import (
     BaseZeroShotDataset,
 )
-from utils.registry import Registry
+from cvnets.utils.registry import Registry
 
 ZERO_SHOT_DATASET_REGISTRY = Registry(
     registry_name="zero_shot_datasets",

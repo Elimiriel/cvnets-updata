@@ -4,8 +4,8 @@
 #
 import pytest
 
-from data.data_loaders import CVNetsDataLoader
-from data.sampler import build_sampler
+from cvnets.data.data_loaders import CVNetsDataLoader
+from cvnets.data.sampler import build_sampler
 from tests.configs import get_config
 from tests.data.datasets.segmentation.mock_ade20k import MockADE20KDataset
 

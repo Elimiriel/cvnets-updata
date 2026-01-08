@@ -21,8 +21,8 @@ import torch
 from torch import Tensor
 from torch.nn import functional
 
-from data.collate_fns import COLLATE_FN_REGISTRY, collate_functions
-from data.transforms import audio_bytes, image_bytes
+from cvnets.data.collate_fns import COLLATE_FN_REGISTRY, collate_functions
+from cvnets.data.transforms import audio_bytes, image_bytes
 
 
 @COLLATE_FN_REGISTRY.register(name="byteformer_image_collate_fn")

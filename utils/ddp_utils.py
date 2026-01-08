@@ -10,7 +10,7 @@ from typing import Optional
 import torch
 import torch.distributed as dist
 
-from utils import logger
+from cvnets.utils import logger
 
 
 def is_master(opts) -> bool:

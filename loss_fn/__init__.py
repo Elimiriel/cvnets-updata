@@ -6,9 +6,9 @@
 import argparse
 from typing import Optional
 
-from loss_fn.base_criteria import BaseCriteria
-from utils import logger
-from utils.registry import Registry
+from cvnets.loss_fn.base_criteria import BaseCriteria
+from cvnets.utils import logger
+from cvnets.utils.registry import Registry
 
 # Registry for loss functions.
 LOSS_REGISTRY = Registry(

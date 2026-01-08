@@ -16,21 +16,21 @@ import torch
 from torch import Tensor
 from torch.nn import functional as F
 
-from common import DEFAULT_EPOCHS, DEFAULT_ITERATIONS, DEFAULT_LOG_FREQ, if_test_env
-from data.transforms.image_torch import apply_mixing_transforms
-from engine.utils import autocast_fn, get_batch_size, get_log_writers, log_metrics
-from loss_landscape import landscape_utils as ll_utils
-from metrics.stats import Statistics
-from options.parse_args import parse_validation_metric_names
-from utils import logger
-from utils.checkpoint_utils import (
+from cvnets.common import DEFAULT_EPOCHS, DEFAULT_ITERATIONS, DEFAULT_LOG_FREQ, if_test_env
+from cvnets.data.transforms.image_torch import apply_mixing_transforms
+from cvnets.engine.utils import autocast_fn, get_batch_size, get_log_writers, log_metrics
+from cvnets.loss_landscape import landscape_utils as ll_utils
+from cvnets.metrics.stats import Statistics
+from cvnets.options.parse_args import parse_validation_metric_names
+from cvnets.utils import logger
+from cvnets.utils.checkpoint_utils import (
     copy_weights,
     save_checkpoint,
     save_interval_checkpoint,
 )
-from utils.common_utils import move_to_device, unwrap_model_fn
-from utils.ddp_utils import dist_barrier, is_master
-from utils.tensor_utils import reduce_tensor_sum
+from cvnets.utils.common_utils import move_to_device, unwrap_model_fn
+from cvnets.utils.ddp_utils import dist_barrier, is_master
+from cvnets.utils.tensor_utils import reduce_tensor_sum
 
 
 class Trainer(object):

@@ -5,7 +5,7 @@
 
 import argparse
 
-from utils.registry import Registry
+from cvnets.utils.registry import Registry
 
 METRICS_REGISTRY = Registry(
     "metrics",

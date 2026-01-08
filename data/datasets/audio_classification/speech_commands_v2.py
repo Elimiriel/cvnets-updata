@@ -14,10 +14,10 @@ import torchaudio
 from torch import Tensor
 from torch.nn import functional as F
 
-from data.datasets import DATASET_REGISTRY, dataset_base
-from data.transforms.audio import Noise, Roll, SetFixedLength
-from data.transforms.common import Compose
-from data.transforms.image_pil import BaseTransformation
+from cvnets.data.datasets import DATASET_REGISTRY, dataset_base
+from cvnets.data.transforms.audio import Noise, Roll, SetFixedLength
+from cvnets.data.transforms.common import Compose
+from cvnets.data.transforms.image_pil import BaseTransformation
 
 
 @DATASET_REGISTRY.register(name="speech_commands_v2", type="audio_classification")

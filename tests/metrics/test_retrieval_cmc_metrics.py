@@ -9,7 +9,7 @@ import numpy as np
 import pytest
 import torch
 
-from metrics.retrieval_cmc import (
+from cvnets.metrics.retrieval_cmc import (
     RetrievalCMC,
     cmc_calculation,
     cosine_distance_matrix,

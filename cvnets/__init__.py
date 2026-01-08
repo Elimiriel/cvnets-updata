@@ -15,7 +15,7 @@ from cvnets.models import arguments_model, get_model
 from cvnets.models.detection import DetectionPredTuple
 from cvnets.neural_augmentor import arguments_neural_augmentor
 from cvnets.text_encoders import arguments_text_encoder
-from options.utils import extend_selected_args_with_prefix
+from cvnets.options.utils import extend_selected_args_with_prefix
 
 
 def modeling_arguments(parser: argparse.ArgumentParser) -> argparse.ArgumentParser:

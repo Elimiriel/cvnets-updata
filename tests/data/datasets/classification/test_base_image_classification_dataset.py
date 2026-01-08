@@ -7,12 +7,12 @@ import functools
 
 import pytest
 
-from data.collate_fns import build_collate_fn
-from data.data_loaders import CVNetsDataLoader
-from data.datasets.classification.base_image_classification_dataset import (
+from cvnets.data.collate_fns import build_collate_fn
+from cvnets.data.data_loaders import CVNetsDataLoader
+from cvnets.data.datasets.classification.base_image_classification_dataset import (
     BaseImageClassificationDataset,
 )
-from data.sampler import build_sampler
+from cvnets.data.sampler import build_sampler
 from tests.configs import get_config
 
 

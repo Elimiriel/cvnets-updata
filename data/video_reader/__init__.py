@@ -5,10 +5,10 @@
 
 import argparse
 
-from data.video_reader.base_av_reader import BaseAVReader
-from utils import logger
-from utils.ddp_utils import is_master
-from utils.registry import Registry
+from cvnets.data.video_reader.base_av_reader import BaseAVReader
+from cvnets.utils import logger
+from cvnets.utils.ddp_utils import is_master
+from cvnets.utils.registry import Registry
 
 VIDEO_READER_REGISTRY = Registry(
     "video_reader",

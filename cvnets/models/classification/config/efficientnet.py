@@ -8,8 +8,8 @@ from dataclasses import dataclass
 from functools import partial
 from typing import Dict
 
-from utils import logger
-from utils.math_utils import make_divisible
+from cvnets.utils import logger
+from cvnets.utils.math_utils import make_divisible
 
 
 @dataclass

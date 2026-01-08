@@ -19,7 +19,7 @@ from cvnets.layers import (
 )
 from cvnets.modules import TransformerEncoder
 from cvnets.text_encoders import TEXT_ENCODER_REGISTRY, BaseTextEncoder
-from utils import logger
+from cvnets.utils import logger
 
 
 @TEXT_ENCODER_REGISTRY.register(name="transformer")
