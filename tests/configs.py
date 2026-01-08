@@ -5,8 +5,8 @@
 
 import argparse
 
-from options.opts import get_training_arguments
-from options.utils import load_config_file
+from cvnets.options.opts import get_training_arguments
+from cvnets.options.utils import load_config_file
 
 
 def get_config(

@@ -7,8 +7,8 @@ import torch
 
 from cvnets.layers import LinearLayer
 from cvnets.models.classification.base_image_encoder import BaseImageEncoder
-from loss_fn.distillation.hard_distillation import HardDistillationLoss
-from loss_fn.distillation.soft_kl_distillation import SoftKLLoss
+from cvnets.loss_fn.distillation.hard_distillation import HardDistillationLoss
+from cvnets.loss_fn.distillation.soft_kl_distillation import SoftKLLoss
 from tests.configs import get_config
 from tests.test_utils import unset_pretrained_models_from_opts
 

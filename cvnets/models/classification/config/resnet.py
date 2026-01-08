@@ -5,7 +5,7 @@
 
 from typing import Dict, List
 
-from utils import logger
+from cvnets.utils import logger
 
 
 def add_squeeze_channels(

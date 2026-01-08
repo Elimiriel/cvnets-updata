@@ -7,7 +7,7 @@ from typing import Any, Dict, List, Tuple, Union
 
 import pytest
 
-from options.parse_args import JsonValidator
+from cvnets.options.parse_args import JsonValidator
 
 
 @pytest.mark.parametrize(

@@ -7,7 +7,7 @@ from functools import partial
 from typing import Dict
 
 from cvnets.modules.fastvit import RepCPE
-from utils import logger
+from cvnets.utils import logger
 
 
 def get_configuration(opts: argparse.Namespace) -> Dict:

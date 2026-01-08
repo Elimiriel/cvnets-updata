@@ -19,7 +19,7 @@ from cvnets.modules.fastvit import (
     convolutional_stem,
 )
 from cvnets.modules.mobileone_block import MobileOneBlock
-from utils import logger
+from cvnets.utils import logger
 
 
 def basic_blocks(

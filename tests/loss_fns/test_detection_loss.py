@@ -7,8 +7,8 @@ import random
 import pytest
 import torch
 
-from loss_fn.detection.mask_rcnn_loss import MaskRCNNLoss
-from loss_fn.detection.ssd_multibox_loss import SSDLoss
+from cvnets.loss_fn.detection.mask_rcnn_loss import MaskRCNNLoss
+from cvnets.loss_fn.detection.ssd_multibox_loss import SSDLoss
 
 
 @pytest.mark.parametrize("batch_size", [1, 2])

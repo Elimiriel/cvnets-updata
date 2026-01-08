@@ -14,7 +14,7 @@ from cvnets.image_projection_layers import (
     BaseImageProjectionHead,
 )
 from cvnets.layers import MultiHeadAttention, PositionalEmbedding
-from utils import logger
+from cvnets.utils import logger
 
 
 @IMAGE_PROJECTION_HEAD_REGISTRY.register(name="attention_pool_nchw2nc")

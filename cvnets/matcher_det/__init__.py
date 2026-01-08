@@ -6,8 +6,8 @@
 import argparse
 
 from cvnets.matcher_det.base_matcher import BaseMatcher
-from utils import logger
-from utils.registry import Registry
+from cvnets.utils import logger
+from cvnets.utils.registry import Registry
 
 # register BOX Matcher
 MATCHER_REGISTRY = Registry(

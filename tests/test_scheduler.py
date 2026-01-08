@@ -12,7 +12,7 @@ import pytest
 
 sys.path.append("..")
 
-from optim.scheduler import build_scheduler
+from cvnets.optim.scheduler import build_scheduler
 from tests.configs import get_config
 
 LR_TOLERANCE = 1e-3

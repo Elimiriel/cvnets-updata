@@ -7,7 +7,7 @@ import argparse
 
 import torch
 
-from data.collate_fns import byteformer_collate_functions
+from cvnets.data.collate_fns import byteformer_collate_functions
 
 
 def test_byteformer_image_collate_fn() -> None:

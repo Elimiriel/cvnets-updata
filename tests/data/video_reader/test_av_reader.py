@@ -8,8 +8,8 @@ import sys
 import pytest
 import torch
 
-from data.video_reader.decord_reader import DecordAVReader
-from data.video_reader.pyav_reader import PyAVReader
+from cvnets.data.video_reader.decord_reader import DecordAVReader
+from cvnets.data.video_reader.pyav_reader import PyAVReader
 from tests.configs import get_config
 
 

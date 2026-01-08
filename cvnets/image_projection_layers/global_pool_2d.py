@@ -14,8 +14,8 @@ from cvnets.image_projection_layers import (
     BaseImageProjectionHead,
 )
 from cvnets.layers import GlobalPool
-from utils import logger
-from utils.ddp_utils import is_master
+from cvnets.utils import logger
+from cvnets.utils.ddp_utils import is_master
 
 
 @IMAGE_PROJECTION_HEAD_REGISTRY.register(name="global_pool_nchw2nc")

@@ -12,7 +12,7 @@ from cvnets.layers import ConvLayer2d, Dropout2d, UpSample
 from cvnets.misc.common import parameter_list
 from cvnets.misc.init_utils import initialize_weights
 from cvnets.models import MODEL_REGISTRY, BaseAnyNNModel
-from utils import logger
+from cvnets.utils import logger
 
 
 @MODEL_REGISTRY.register(name="__base__", type="segmentation_head")

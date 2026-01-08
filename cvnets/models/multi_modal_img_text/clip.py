@@ -20,7 +20,7 @@ from cvnets.models.multi_modal_img_text.base_multi_modal_img_text import (
     BaseMultiModalImageText,
 )
 from cvnets.text_encoders import BaseTextEncoder, build_text_encoder
-from utils import logger
+from cvnets.utils import logger
 
 
 @MODEL_REGISTRY.register(name="clip", type="multi_modal_image_text")

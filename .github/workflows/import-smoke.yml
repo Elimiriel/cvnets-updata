@@ -1,0 +1,30 @@
+name: Install-and-Import Smoke Test
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  import-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install (no deps)
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e . --no-deps
+      - name: Import checks
+        run: |
+          python - <<'PY'
+          import importlib
+          importlib.import_module('cvnets')
+          importlib.import_module('cvnets.data')
+          importlib.import_module('cvnets.utils')
+          print('imports OK')
+          PY

@@ -11,7 +11,7 @@ from torch import Tensor, nn
 
 from cvnets.layers import AdaptiveAvgPool2d, ConvLayer2d, Dropout2d
 from cvnets.modules import BaseModule
-from utils import logger
+from cvnets.utils import logger
 
 
 class PSP(BaseModule):

@@ -6,8 +6,8 @@
 import argparse
 
 from cvnets.anchor_generator.base_anchor_generator import BaseAnchorGenerator
-from utils import logger
-from utils.registry import Registry
+from cvnets.utils import logger
+from cvnets.utils.registry import Registry
 
 # register anchor generator
 ANCHOR_GEN_REGISTRY = Registry(

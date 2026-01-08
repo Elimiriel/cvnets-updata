@@ -28,7 +28,7 @@ from cvnets.models.detection.utils.rcnn_utils import (
     MaskRCNNPredictor,
     RPNHead,
 )
-from utils import logger
+from cvnets.utils import logger
 
 
 class MaskRCNNEncoder(nn.Module):

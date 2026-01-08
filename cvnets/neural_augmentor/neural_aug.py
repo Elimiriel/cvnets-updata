@@ -19,7 +19,7 @@ from cvnets.neural_augmentor.utils.neural_aug_utils import (
     random_contrast,
     random_noise,
 )
-from utils import logger
+from cvnets.utils import logger
 
 _distribution_tuple = (UniformSampler,)
 

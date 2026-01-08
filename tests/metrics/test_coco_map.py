@@ -13,8 +13,8 @@ import torch
 from pycocotools import mask as maskUtils
 
 from cvnets.models.detection import DetectionPredTuple
-from metrics import coco_map
-from metrics.stats import Statistics
+from cvnets.metrics import coco_map
+from cvnets.metrics.stats import Statistics
 
 
 def test_coco_map():

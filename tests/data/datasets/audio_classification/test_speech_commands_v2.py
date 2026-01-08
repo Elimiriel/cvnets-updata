@@ -11,8 +11,8 @@ import pytest
 import torch
 from torch import Tensor
 
-from data.collate_fns import collate_functions
-from data.datasets.audio_classification.speech_commands_v2 import (
+from cvnets.data.collate_fns import collate_functions
+from cvnets.data.datasets.audio_classification.speech_commands_v2 import (
     SpeechCommandsv2Dataset,
 )
 

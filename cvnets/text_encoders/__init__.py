@@ -6,8 +6,8 @@
 import argparse
 
 from cvnets.text_encoders.base_text_encoder import BaseTextEncoder
-from utils import logger
-from utils.registry import Registry
+from cvnets.utils import logger
+from cvnets.utils.registry import Registry
 
 TEXT_ENCODER_REGISTRY = Registry(
     "text_encoder",

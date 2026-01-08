@@ -12,7 +12,7 @@ from torch import Tensor, nn
 from cvnets.layers import ConvLayer2d, norm_layers_tuple
 from cvnets.misc.init_utils import initialize_conv_layer, initialize_norm_layers
 from cvnets.modules import BaseModule
-from utils import logger
+from cvnets.utils import logger
 
 
 class FeaturePyramidNetwork(BaseModule):

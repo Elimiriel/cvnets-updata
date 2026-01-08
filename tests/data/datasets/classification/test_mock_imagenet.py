@@ -7,8 +7,8 @@ from typing import Type
 
 import pytest
 
-from data.loader.dataloader import CVNetsDataLoader
-from data.sampler import build_sampler
+from cvnets.data.loader.dataloader import CVNetsDataLoader
+from cvnets.data.sampler import build_sampler
 from tests.configs import get_config
 from tests.data.datasets.classification.mock_imagenet import (
     MockImageNetADataset,

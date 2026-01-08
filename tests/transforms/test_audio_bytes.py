@@ -8,7 +8,7 @@ import argparse
 import pytest
 import torch
 
-from data.transforms import audio_bytes
+from cvnets.data.transforms import audio_bytes
 
 
 @pytest.mark.parametrize(

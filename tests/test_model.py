@@ -15,7 +15,7 @@ from typing import Dict
 from torch import Tensor
 
 from cvnets import get_model
-from loss_fn import build_loss_fn
+from cvnets.loss_fn import build_loss_fn
 from tests.configs import get_config
 from tests.test_utils import unset_pretrained_models_from_opts
 

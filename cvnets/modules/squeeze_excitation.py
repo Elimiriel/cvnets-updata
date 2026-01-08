@@ -11,7 +11,7 @@ from torch import Tensor, nn
 from cvnets.layers import AdaptiveAvgPool2d, ConvLayer2d
 from cvnets.layers.activation import build_activation_layer
 from cvnets.modules import BaseModule
-from utils.math_utils import make_divisible
+from cvnets.utils.math_utils import make_divisible
 
 
 class SqueezeExcitation(BaseModule):

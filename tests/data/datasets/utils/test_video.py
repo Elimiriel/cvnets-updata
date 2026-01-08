@@ -7,7 +7,7 @@ from typing import Dict
 import pytest
 import torch
 
-from data.datasets.utils import video
+from cvnets.data.datasets.utils import video
 
 
 def _get_invalid_label(timestamp: float) -> Dict:

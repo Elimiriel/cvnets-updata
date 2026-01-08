@@ -6,12 +6,12 @@
 
 from functools import partial
 
-from data.collate_fns import build_collate_fn
-from data.loader.dataloader import CVNetsDataLoader
-from data.sampler import build_sampler
+from cvnets.data.collate_fns import build_collate_fn
+from cvnets.data.loader.dataloader import CVNetsDataLoader
+from cvnets.data.sampler import build_sampler
 from tests.dummy_datasets import train_val_datasets
-from utils import logger
-from utils.ddp_utils import is_master
+from cvnets.utils import logger
+from cvnets.utils.ddp_utils import is_master
 
 
 def create_train_val_loader(opts):

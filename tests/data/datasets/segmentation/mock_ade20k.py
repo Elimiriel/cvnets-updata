@@ -7,7 +7,7 @@ from typing import Optional
 
 from PIL import Image
 
-from data.datasets.segmentation.ade20k import ADE20KDataset
+from cvnets.data.datasets.segmentation.ade20k import ADE20KDataset
 
 TOTAL_SAMPLES = 100
 

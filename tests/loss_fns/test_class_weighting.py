@@ -3,7 +3,7 @@
 
 import torch
 
-from loss_fn.utils.class_weighting import compute_class_weights
+from cvnets.loss_fn.utils.class_weighting import compute_class_weights
 
 
 def test_class_weighting():

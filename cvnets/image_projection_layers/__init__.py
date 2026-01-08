@@ -7,8 +7,8 @@
 import argparse
 
 from cvnets.image_projection_layers.base_image_projection import BaseImageProjectionHead
-from utils import logger
-from utils.registry import Registry
+from cvnets.utils import logger
+from cvnets.utils.registry import Registry
 
 IMAGE_PROJECTION_HEAD_REGISTRY = Registry(
     "image_projection_head",

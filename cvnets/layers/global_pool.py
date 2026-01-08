@@ -10,7 +10,7 @@ import torch
 from torch import Tensor
 
 from cvnets.layers.base_layer import BaseLayer
-from utils import logger
+from cvnets.utils import logger
 
 
 class GlobalPool(BaseLayer):

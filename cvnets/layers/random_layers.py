@@ -9,7 +9,7 @@ from typing import List, Optional
 from torch import Tensor
 
 from cvnets.layers.base_layer import BaseLayer
-from utils.math_utils import bound_fn
+from cvnets.utils.math_utils import bound_fn
 
 
 class RandomApply(BaseLayer):

@@ -6,7 +6,7 @@ import argparse
 import pytest
 import torch
 
-from loss_fn.segmentation.cross_entropy import SegCrossEntropy
+from cvnets.loss_fn.segmentation.cross_entropy import SegCrossEntropy
 
 
 @pytest.mark.parametrize("batch_size", [1, 2])

@@ -18,7 +18,7 @@ from cvnets.misc.box_utils import (
     corner_form_to_center_form,
 )
 from cvnets.misc.third_party.ssd_utils import assign_priors
-from utils import logger
+from cvnets.utils import logger
 
 
 @MATCHER_REGISTRY.register(name="ssd")
