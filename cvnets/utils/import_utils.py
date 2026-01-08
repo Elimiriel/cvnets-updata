@@ -27,13 +27,24 @@ def import_modules_from_folder(
             also import `LIBRARY_ROOT/{extra_root}/{folder_name}/**/*.py` modules.
     """
     if not LIBRARY_ROOT.joinpath(folder_name).exists():
+        # lazy loading handling: skip if the main folder does not exist
         return
-
-    for base_dir in [".", *extra_roots]:
-        for path in LIBRARY_ROOT.glob(os.path.join(base_dir, folder_name, "**/*.py")):
+    
+    # python 3.12+ compatibility: use rglob instead of glob with recursive
+    search_roots = [LIBRARY_ROOT / folder_name]
+    for extra in extra_roots:
+        search_roots.append(LIBRARY_ROOT / extra / folder_name)
+        
+    for root in search_roots:
+        if not root.exists():
+            continue
+        for path in root.rglob("*.py"):
             filename = path.name
             if filename[0] not in (".", "_"):
-                module_name = str(
-                    path.relative_to(LIBRARY_ROOT).with_suffix("")
-                ).replace(os.sep, ".")
+                module_name = (
+                    path.relative_to(LIBRARY_ROOT)
+                    .with_suffix("")
+                    .as_posix()
+                    .replace("/", ".")
+                )
                 importlib.import_module(module_name)
