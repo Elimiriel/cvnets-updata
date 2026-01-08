@@ -20,7 +20,7 @@ from options.utils import (
     extend_selected_args_with_prefix,
     extract_opts_with_prefix_replacement,
 )
-from utils import logger
+from cvnets.utils import logger
 
 
 class VideoDurationDoesNotMatchAudioDurationError(AssertionError):

@@ -12,9 +12,9 @@ from data import create_test_loader
 from engine import Trainer
 from loss_fn import build_loss_fn
 from options.opts import get_loss_landscape_args
-from utils import logger, resources
-from utils.common_utils import create_directories, device_setup
-from utils.ddp_utils import distributed_init, is_master
+from cvnets.utils import logger, resources
+from cvnets.utils.common_utils import create_directories, device_setup
+from cvnets.utils.ddp_utils import distributed_init, is_master
 
 
 def main(opts, **kwargs):

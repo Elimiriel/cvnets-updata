@@ -14,8 +14,8 @@ from data.datasets import DATASET_REGISTRY
 from data.datasets.dataset_base import BaseImageDataset
 from data.transforms import image_pil as T
 from data.transforms.common import Compose
-from utils import logger
-from utils.download_utils import get_local_path
+from cvnets.utils import logger
+from cvnets.utils.download_utils import get_local_path
 
 IMAGENETv2_SPLIT_LINK_MAP = {
     "matched_frequency": {

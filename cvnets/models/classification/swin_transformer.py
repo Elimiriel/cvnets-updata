@@ -20,7 +20,7 @@ from cvnets.models import MODEL_REGISTRY
 from cvnets.models.classification.base_image_encoder import BaseImageEncoder
 from cvnets.models.classification.config.swin_transformer import get_configuration
 from cvnets.modules import PatchMerging, Permute, SwinTransformerBlock
-from utils import logger
+from cvnets.utils import logger
 
 
 @MODEL_REGISTRY.register(name="swin", type="classification")

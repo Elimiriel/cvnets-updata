@@ -11,7 +11,7 @@ from torch.nn import functional as F
 
 from loss_fn import LOSS_REGISTRY
 from loss_fn.distillation.base_distillation import BaseDistillationCriteria
-from utils import logger
+from cvnets.utils import logger
 
 
 @LOSS_REGISTRY.register(name="hard_distillation", type="distillation")

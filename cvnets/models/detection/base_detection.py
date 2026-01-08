@@ -11,7 +11,7 @@ from torch import nn
 from cvnets.misc.init_utils import initialize_weights
 from cvnets.models import MODEL_REGISTRY, BaseAnyNNModel, get_model
 from cvnets.models.classification.base_image_encoder import BaseImageEncoder
-from utils import logger
+from cvnets.utils import logger
 
 
 @MODEL_REGISTRY.register(name="__base__", type="detection")

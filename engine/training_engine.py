@@ -22,15 +22,15 @@ from engine.utils import autocast_fn, get_batch_size, get_log_writers, log_metri
 from loss_landscape import landscape_utils as ll_utils
 from metrics.stats import Statistics
 from options.parse_args import parse_validation_metric_names
-from utils import logger
-from utils.checkpoint_utils import (
+from cvnets.utils import logger
+from cvnets.utils.checkpoint_utils import (
     copy_weights,
     save_checkpoint,
     save_interval_checkpoint,
 )
-from utils.common_utils import move_to_device, unwrap_model_fn
-from utils.ddp_utils import dist_barrier, is_master
-from utils.tensor_utils import reduce_tensor_sum
+from cvnets.utils.common_utils import move_to_device, unwrap_model_fn
+from cvnets.utils.ddp_utils import dist_barrier, is_master
+from cvnets.utils.tensor_utils import reduce_tensor_sum
 
 
 class Trainer(object):

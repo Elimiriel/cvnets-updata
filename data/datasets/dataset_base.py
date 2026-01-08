@@ -15,7 +15,7 @@ from torch.utils import data
 
 from data.transforms import BaseTransformation
 from data.video_reader import get_video_reader
-from utils import logger
+from cvnets.utils import logger
 
 
 class BaseDataset(data.Dataset, ABC):
@@ -328,7 +328,7 @@ class BaseImageDataset(BaseDataset, ABC):
         r"""Extra information to be represented in __repr__. Each line in the output
         string should be prefixed with ``\t``.
         """
-        from utils.tensor_utils import image_size_from_opts
+        from cvnets.utils.tensor_utils import image_size_from_opts
 
         return (
             super().extra_repr()

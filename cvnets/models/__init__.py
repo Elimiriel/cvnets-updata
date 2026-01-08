@@ -8,9 +8,9 @@ from typing import Optional
 
 from cvnets.misc.common import freeze_modules_based_on_opts, load_pretrained_model
 from cvnets.models.base_model import BaseAnyNNModel
-from utils import logger
-from utils.download_utils import get_local_path
-from utils.registry import Registry
+from cvnets.utils import logger
+from cvnets.utils.download_utils import get_local_path
+from cvnets.utils.registry import Registry
 
 MODEL_REGISTRY = Registry(
     registry_name="model_registry",

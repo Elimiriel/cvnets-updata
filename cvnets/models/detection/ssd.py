@@ -21,8 +21,8 @@ from cvnets.models.classification.base_image_encoder import BaseImageEncoder
 from cvnets.models.detection import DetectionPredTuple
 from cvnets.models.detection.base_detection import BaseDetection
 from cvnets.modules import SSDHead
-from utils import logger
-from utils.common_utils import is_coreml_conversion
+from cvnets.utils import logger
+from cvnets.utils.common_utils import is_coreml_conversion
 
 
 @MODEL_REGISTRY.register(name="ssd", type="detection")

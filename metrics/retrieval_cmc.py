@@ -14,9 +14,9 @@ from torch.nn import functional as F
 
 from metrics import METRICS_REGISTRY
 from metrics.metric_base import EpochMetric
-from utils import logger
-from utils.ddp_utils import is_master
-from utils.registry import Registry
+from cvnets.utils import logger
+from cvnets.utils.ddp_utils import is_master
+from cvnets.utils.registry import Registry
 
 DISTANCE_REGISTRY = Registry("distance_metrics")
 

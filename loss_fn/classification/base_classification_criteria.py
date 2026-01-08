@@ -7,7 +7,7 @@ from typing import Any, Dict, Union
 from torch import Tensor
 
 from loss_fn import LOSS_REGISTRY, BaseCriteria
-from utils import logger
+from cvnets.utils import logger
 
 
 @LOSS_REGISTRY.register(name="__base__", type="classification")

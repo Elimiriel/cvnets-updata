@@ -12,7 +12,7 @@ from torch import Tensor
 
 from loss_fn import LOSS_REGISTRY, BaseCriteria, build_loss_fn
 from options.utils import flatten_yaml_as_dict
-from utils import logger
+from cvnets.utils import logger
 
 
 # CompositeLoss can be used with any task. Therefore, we register both name and type

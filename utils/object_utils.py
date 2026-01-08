@@ -8,7 +8,7 @@ from numbers import Number
 from typing import Dict
 
 from common import is_test_env
-from utils import logger
+from cvnets.utils import logger
 
 
 def is_iterable(x):

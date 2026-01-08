@@ -10,7 +10,7 @@ from torch import Tensor, nn
 
 from cvnets.layers.base_layer import BaseLayer
 from cvnets.layers.normalization_layers import get_normalization_layer
-from utils import logger
+from cvnets.utils import logger
 
 
 class Embedding(nn.Embedding):

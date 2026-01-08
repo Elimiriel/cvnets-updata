@@ -6,7 +6,7 @@
 import math
 from typing import Dict
 
-from utils.math_utils import make_divisible
+from cvnets.utils.math_utils import make_divisible
 
 
 def get_configuration(opts) -> Dict:

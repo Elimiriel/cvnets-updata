@@ -8,8 +8,8 @@ from pathlib import Path
 
 from pytest_mock import MockerFixture
 
-from utils import import_utils
-from utils.import_utils import import_modules_from_folder
+from cvnets.utils import import_utils
+from cvnets.utils.import_utils import import_modules_from_folder
 
 
 def test_import_utils(tmp_path: Path, mocker: MockerFixture) -> None:

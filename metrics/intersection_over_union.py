@@ -12,7 +12,7 @@ from torch import Tensor
 
 from metrics import METRICS_REGISTRY
 from metrics.metric_base import AverageMetric
-from utils import logger
+from cvnets.utils import logger
 
 
 def compute_miou_batch(

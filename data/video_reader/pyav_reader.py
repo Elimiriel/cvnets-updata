@@ -11,7 +11,7 @@ import torch
 
 from data.transforms.base_transforms import BaseTransformation
 from data.video_reader import VIDEO_READER_REGISTRY, BaseAVReader
-from utils import logger
+from cvnets.utils import logger
 
 
 @VIDEO_READER_REGISTRY.register(name="pyav")

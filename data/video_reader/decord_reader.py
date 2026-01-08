@@ -18,7 +18,7 @@ import torch
 
 from data.video_reader import VIDEO_READER_REGISTRY
 from data.video_reader.pyav_reader import BaseAVReader
-from utils import logger
+from cvnets.utils import logger
 
 
 @VIDEO_READER_REGISTRY.register(name="decord")

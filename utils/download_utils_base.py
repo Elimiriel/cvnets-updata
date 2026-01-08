@@ -11,8 +11,8 @@ from typing import Optional
 import requests
 
 from common import TMP_CACHE_LOC, if_test_env
-from utils import logger
-from utils.ddp_utils import dist_barrier, is_start_rank_node
+from cvnets.utils import logger
+from cvnets.utils.ddp_utils import dist_barrier, is_start_rank_node
 
 
 def get_basic_local_path(

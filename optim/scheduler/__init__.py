@@ -6,8 +6,8 @@
 import argparse
 
 from optim.scheduler.base_scheduler import BaseLRScheduler
-from utils import logger
-from utils.registry import Registry
+from cvnets.utils import logger
+from cvnets.utils.registry import Registry
 
 SCHEDULER_REGISTRY = Registry(
     "scheduler",

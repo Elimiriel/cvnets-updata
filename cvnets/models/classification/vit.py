@@ -27,7 +27,7 @@ from cvnets.models import MODEL_REGISTRY
 from cvnets.models.classification.base_image_encoder import BaseImageEncoder
 from cvnets.models.classification.config.vit import get_configuration
 from cvnets.modules import TransformerEncoder
-from utils import logger
+from cvnets.utils import logger
 
 
 @MODEL_REGISTRY.register(name="vit", type="classification")

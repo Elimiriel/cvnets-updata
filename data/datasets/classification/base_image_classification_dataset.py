@@ -12,8 +12,8 @@ from data.datasets.dataset_base import BaseImageDataset
 from data.datasets.utils.common import select_samples_by_category
 from data.transforms import image_pil
 from data.transforms.common import Compose
-from utils import logger
-from utils.ddp_utils import is_master
+from cvnets.utils import logger
+from cvnets.utils.ddp_utils import is_master
 
 
 class BaseImageClassificationDataset(BaseImageDataset, ImageFolder):

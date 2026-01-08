@@ -13,8 +13,8 @@ from loss_fn import LOSS_REGISTRY
 from loss_fn.multi_modal_img_text.base_multi_modal_img_text_criteria import (
     BaseMultiModalImageTextCriteria,
 )
-from utils import logger
-from utils.tensor_utils import gather_all_features
+from cvnets.utils import logger
+from cvnets.utils.tensor_utils import gather_all_features
 
 
 @LOSS_REGISTRY.register(name="contrastive_loss_clip", type="multi_modal_image_text")

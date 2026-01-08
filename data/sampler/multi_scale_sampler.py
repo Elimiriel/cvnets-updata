@@ -11,7 +11,7 @@ from common import DEFAULT_IMAGE_HEIGHT, DEFAULT_IMAGE_WIDTH
 from data.sampler import SAMPLER_REGISTRY
 from data.sampler.base_sampler import BaseSampler, BaseSamplerDDP
 from data.sampler.utils import image_batch_pairs
-from utils import logger
+from cvnets.utils import logger
 
 
 @SAMPLER_REGISTRY.register(name="multi_scale_sampler")

@@ -22,7 +22,7 @@ from torchvision.transforms import functional as FV
 from data.transforms import TRANSFORMATIONS_REGISTRY, BaseTransformation
 from data.transforms.utils import *
 from options.parse_args import JsonValidator
-from utils import logger
+from cvnets.utils import logger
 
 SUPPORTED_PYTORCH_INTERPOLATIONS = ["nearest", "bilinear", "bicubic"]
 

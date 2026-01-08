@@ -17,8 +17,8 @@ from typing import (
     Union,
 )
 
-from utils import logger
-from utils.import_utils import import_modules_from_folder
+from cvnets.utils import logger
+from cvnets.utils.import_utils import import_modules_from_folder
 
 RegistryItem = TypeVar("RegistryItem", bound=Callable)
 

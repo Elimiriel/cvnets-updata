@@ -19,7 +19,7 @@ from cvnets.layers import (
 from cvnets.models import MODEL_REGISTRY
 from cvnets.models.classification.base_image_encoder import BaseImageEncoder
 from cvnets.models.classification.config.mobilenetv1 import get_configuration
-from utils.math_utils import bound_fn
+from cvnets.utils.math_utils import bound_fn
 
 
 @MODEL_REGISTRY.register(name="mobilenetv1", type="classification")

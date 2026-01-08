@@ -12,7 +12,7 @@ from torch.nn import functional as F
 from loss_fn import LOSS_REGISTRY
 from loss_fn.segmentation.base_segmentation_criteria import BaseSegmentationCriteria
 from loss_fn.utils.class_weighting import compute_class_weights
-from utils import logger
+from cvnets.utils import logger
 
 
 @LOSS_REGISTRY.register(name="cross_entropy", type="segmentation")

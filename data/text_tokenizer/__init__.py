@@ -6,8 +6,8 @@
 import argparse
 
 from data.text_tokenizer.base_tokenizer import BaseTokenizer
-from utils import logger
-from utils.registry import Registry
+from cvnets.utils import logger
+from cvnets.utils.registry import Registry
 
 TOKENIZER_REGISTRY = Registry(
     "tokenizer",

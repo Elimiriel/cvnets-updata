@@ -12,7 +12,7 @@ import torch
 from torch import Tensor
 
 from cvnets.anchor_generator import ANCHOR_GEN_REGISTRY, BaseAnchorGenerator
-from utils import logger
+from cvnets.utils import logger
 
 
 @ANCHOR_GEN_REGISTRY.register(name="ssd")

@@ -2,7 +2,7 @@
 # For licensing see accompanying LICENSE file.
 # Copyright (C) 2023 Apple Inc. All Rights Reserved.
 #
-from utils.dict_utils import filter_keys
+from cvnets.utils.dict_utils import filter_keys
 
 
 def test_extract_keys():

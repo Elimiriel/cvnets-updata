@@ -15,7 +15,7 @@ from torch.utils.data.sampler import Sampler
 
 from data.sampler import SAMPLER_REGISTRY, build_sampler
 from options.utils import flatten_yaml_as_dict
-from utils import logger
+from cvnets.utils import logger
 
 
 @SAMPLER_REGISTRY.register(name="chain_sampler")

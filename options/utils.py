@@ -11,9 +11,9 @@ import re
 import yaml
 
 from options.errors import UnrecognizedYamlConfigEntry
-from utils import logger
-from utils.ddp_utils import is_master
-from utils.download_utils import get_local_path
+from cvnets.utils import logger
+from cvnets.utils.ddp_utils import is_master
+from cvnets.utils.download_utils import get_local_path
 
 try:
     # Workaround for DeprecationWarning when importing Collections

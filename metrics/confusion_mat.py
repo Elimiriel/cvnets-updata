@@ -11,7 +11,7 @@ from torch import Tensor
 
 from metrics import METRICS_REGISTRY
 from metrics.metric_base import BaseMetric
-from utils.tensor_utils import reduce_tensor_sum
+from cvnets.utils.tensor_utils import reduce_tensor_sum
 
 
 # TODO: tests

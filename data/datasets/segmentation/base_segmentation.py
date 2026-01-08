@@ -15,8 +15,8 @@ from torch import Tensor
 from data.datasets.dataset_base import BaseImageDataset
 from data.transforms import image_pil as T
 from data.transforms.common import Compose
-from utils import logger
-from utils.color_map import Colormap
+from cvnets.utils import logger
+from cvnets.utils.color_map import Colormap
 
 
 class BaseImageSegmentationDataset(BaseImageDataset):

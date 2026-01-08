@@ -12,8 +12,8 @@ from torch import Tensor, nn
 from cvnets import parameter_list
 from cvnets.layers import norm_layers_tuple
 from cvnets.misc.init_utils import initialize_weights
-from utils import logger
-from utils.ddp_utils import is_master
+from cvnets.utils import logger
+from cvnets.utils.ddp_utils import is_master
 
 
 class BaseTextEncoder(nn.Module):

@@ -13,10 +13,10 @@ import torch
 
 from cvnets import EMA
 from optim import BaseOptim
-from utils import logger
-from utils.common_utils import unwrap_model_fn
-from utils.ddp_utils import is_master
-from utils.download_utils import get_local_path
+from cvnets.utils import logger
+from cvnets.utils.common_utils import unwrap_model_fn
+from cvnets.utils.ddp_utils import is_master
+from cvnets.utils.download_utils import get_local_path
 
 CHECKPOINT_EXTN = "pt"
 

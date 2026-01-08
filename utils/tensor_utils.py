@@ -16,7 +16,7 @@ from common import (
     DEFAULT_IMAGE_WIDTH,
     DEFAULT_VIDEO_FRAMES,
 )
-from utils.third_party.ddp_functional_utils import (
+from cvnets.utils.third_party.ddp_functional_utils import (
     all_gather as all_gather_with_backward,
 )
 

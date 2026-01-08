@@ -9,8 +9,8 @@ from typing import Dict, List, Tuple, Union
 
 import numpy as np
 
-from utils import logger
-from utils.math_utils import make_divisible
+from cvnets.utils import logger
+from cvnets.utils.math_utils import make_divisible
 
 supported_modes = [
     "x_200mf",

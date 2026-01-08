@@ -17,7 +17,7 @@ from data.datasets import DATASET_REGISTRY
 from data.datasets.detection.base_detection import BaseDetectionDataset
 from data.transforms import image_pil as T
 from data.transforms.common import Compose
-from utils import logger
+from cvnets.utils import logger
 
 
 @DATASET_REGISTRY.register(name="coco", type="detection")

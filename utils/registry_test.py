@@ -3,7 +3,7 @@
 # Copyright (C) 2023 Apple Inc. All Rights Reserved.
 #
 
-from utils.registry import Registry
+from cvnets.utils.registry import Registry
 
 
 def test_functional_registry() -> None:

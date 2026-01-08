@@ -13,9 +13,9 @@ from torch.nn import functional as F
 from cvnets.misc.third_party.ssd_utils import hard_negative_mining
 from loss_fn import LOSS_REGISTRY
 from loss_fn.detection.base_detection_criteria import BaseDetectionCriteria
-from utils import logger
-from utils.ddp_utils import is_master
-from utils.tensor_utils import tensor_to_python_float
+from cvnets.utils import logger
+from cvnets.utils.ddp_utils import is_master
+from cvnets.utils.tensor_utils import tensor_to_python_float
 
 
 @LOSS_REGISTRY.register(name="ssd_multibox_loss", type="detection")

@@ -20,13 +20,13 @@ from data import create_test_loader
 from engine.utils import autocast_fn
 from metrics.confusion_mat import ConfusionMatrix
 from options.opts import get_training_arguments
-from utils import logger, resources
-from utils.color_map import Colormap
-from utils.common_utils import create_directories, device_setup
-from utils.ddp_utils import is_master
-from utils.download_utils import get_local_path
-from utils.tensor_utils import image_size_from_opts
-from utils.visualization_utils import convert_to_cityscape_format
+from cvnets.utils import logger, resources
+from cvnets.utils.color_map import Colormap
+from cvnets.utils.common_utils import create_directories, device_setup
+from cvnets.utils.ddp_utils import is_master
+from cvnets.utils.download_utils import get_local_path
+from cvnets.utils.tensor_utils import image_size_from_opts
+from cvnets.utils.visualization_utils import convert_to_cityscape_format
 
 """
 Notes:

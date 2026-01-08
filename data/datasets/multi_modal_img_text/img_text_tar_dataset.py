@@ -20,9 +20,9 @@ from data.datasets import DATASET_REGISTRY
 from data.datasets.multi_modal_img_text.base_multi_modal_img_text import (
     BaseMultiModalImgText,
 )
-from utils import logger, resources
-from utils.ddp_utils import dist_barrier
-from utils.download_utils import get_local_path
+from cvnets.utils import logger, resources
+from cvnets.utils.ddp_utils import dist_barrier
+from cvnets.utils.download_utils import get_local_path
 
 # To enable reading truncated images, we update the default values of following variables in PIL
 Image.MAX_IMAGE_PIXELS = None

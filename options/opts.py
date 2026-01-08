@@ -19,7 +19,7 @@ from metrics import METRICS_REGISTRY, arguments_stats
 from optim import arguments_optimizer
 from optim.scheduler import arguments_scheduler
 from options.utils import load_config_file
-from utils import logger
+from cvnets.utils import logger
 
 
 class ParseKwargs(argparse.Action):

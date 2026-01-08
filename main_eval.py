@@ -11,9 +11,9 @@ from cvnets import get_model
 from data import create_test_loader
 from engine import Evaluator
 from options.opts import get_eval_arguments
-from utils import logger, resources
-from utils.common_utils import create_directories, device_setup
-from utils.ddp_utils import distributed_init, is_master
+from cvnets.utils import logger, resources
+from cvnets.utils.common_utils import create_directories, device_setup
+from cvnets.utils.ddp_utils import distributed_init, is_master
 
 
 def main(opts, **kwargs):

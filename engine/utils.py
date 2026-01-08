@@ -9,9 +9,9 @@ import torch
 from torch import Tensor
 from torch.cuda.amp import autocast
 
-from utils import logger
-from utils.common_utils import create_directories
-from utils.ddp_utils import is_master
+from cvnets.utils import logger
+from cvnets.utils.common_utils import create_directories
+from cvnets.utils.ddp_utils import is_master
 
 str_to_torch_dtype = {"float16": torch.float16, "bfloat16": torch.bfloat16}
 

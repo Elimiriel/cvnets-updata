@@ -8,7 +8,7 @@ import os
 
 import cityscapesscripts.evaluation.evalPixelLevelSemanticLabeling as cityscapes_semseg_eval
 
-from utils import logger
+from cvnets.utils import logger
 
 
 def eval_cityscapes(pred_dir: str, gt_dir: str) -> None:

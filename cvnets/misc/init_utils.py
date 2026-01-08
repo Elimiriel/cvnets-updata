@@ -8,7 +8,7 @@ from typing import Optional
 from torch import nn
 
 from cvnets.layers import GroupLinear, LinearLayer, norm_layers_tuple
-from utils import logger
+from cvnets.utils import logger
 
 supported_conv_inits = [
     "kaiming_normal",

@@ -14,7 +14,7 @@ from torch.nn import functional as F_torch
 from torchvision.transforms import functional as F
 
 from data.transforms import TRANSFORMATIONS_REGISTRY, BaseTransformation
-from utils import logger
+from cvnets.utils import logger
 
 
 # Copied from PyTorch Torchvision

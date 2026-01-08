@@ -13,8 +13,8 @@ from torch import Tensor
 from torch.utils.mobile_optimizer import optimize_for_mobile
 from torchvision.transforms import functional as F
 
-from utils import logger
-from utils.tensor_utils import create_rand_tensor
+from cvnets.utils import logger
+from cvnets.utils.tensor_utils import create_rand_tensor
 
 
 def convert_pytorch_to_coreml(

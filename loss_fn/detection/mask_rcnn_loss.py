@@ -11,7 +11,7 @@ from torch import Tensor
 
 from loss_fn import LOSS_REGISTRY
 from loss_fn.detection.base_detection_criteria import BaseDetectionCriteria
-from utils import logger
+from cvnets.utils import logger
 
 
 @LOSS_REGISTRY.register(name="mask_rcnn_loss", type="detection")

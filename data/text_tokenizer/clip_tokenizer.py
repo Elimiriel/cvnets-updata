@@ -10,8 +10,8 @@ from torch import Tensor
 from torchtext.transforms import CLIPTokenizer
 
 from data.text_tokenizer import TOKENIZER_REGISTRY, BaseTokenizer
-from utils import logger
-from utils.download_utils import get_local_path
+from cvnets.utils import logger
+from cvnets.utils.download_utils import get_local_path
 
 
 @TOKENIZER_REGISTRY.register(name="clip")

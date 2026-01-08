@@ -30,7 +30,7 @@ from typing import Any, Collection, Dict, List, Optional, Tuple
 
 import numpy as np
 
-from utils import logger
+from cvnets.utils import logger
 
 EPS = 1e-6
 FLOAT_TIMESTAMP_EPS = 1e-15

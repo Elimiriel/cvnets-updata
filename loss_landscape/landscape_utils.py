@@ -12,7 +12,7 @@ import torch
 from matplotlib import animation, cm
 from mpl_toolkits.mplot3d import Axes3D
 
-from utils.common_utils import unwrap_model_fn
+from cvnets.utils.common_utils import unwrap_model_fn
 
 # https://github.com/xxxnell/how-do-vits-work
 

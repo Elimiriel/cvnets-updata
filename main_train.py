@@ -24,10 +24,10 @@ from loss_fn import build_loss_fn
 from optim import build_optimizer
 from optim.scheduler import build_scheduler
 from options.opts import get_training_arguments
-from utils import logger, resources
-from utils.checkpoint_utils import load_checkpoint, load_model_state
-from utils.common_utils import create_directories, device_setup
-from utils.ddp_utils import distributed_init, is_master
+from cvnets.utils import logger, resources
+from cvnets.utils.checkpoint_utils import load_checkpoint, load_model_state
+from cvnets.utils.common_utils import create_directories, device_setup
+from cvnets.utils.ddp_utils import distributed_init, is_master
 
 
 @errors.record

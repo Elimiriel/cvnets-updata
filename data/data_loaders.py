@@ -13,9 +13,9 @@ from data.collate_fns import build_collate_fn, build_test_collate_fn
 from data.datasets import BaseDataset, get_test_dataset, get_train_val_datasets
 from data.loader.dataloader import CVNetsDataLoader
 from data.sampler import build_sampler
-from utils import logger
-from utils.ddp_utils import is_master
-from utils.tensor_utils import image_size_from_opts
+from cvnets.utils import logger
+from cvnets.utils.ddp_utils import is_master
+from cvnets.utils.tensor_utils import image_size_from_opts
 
 
 def create_test_loader(opts: argparse.Namespace) -> CVNetsDataLoader:

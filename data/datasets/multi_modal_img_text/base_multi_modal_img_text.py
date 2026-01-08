@@ -21,8 +21,8 @@ from data.datasets.utils.text import caption_preprocessing
 from data.text_tokenizer import build_tokenizer
 from data.transforms import image_pil as T
 from data.transforms.common import Compose
-from utils import logger
-from utils.ddp_utils import is_master, is_start_rank_node
+from cvnets.utils import logger
+from cvnets.utils.ddp_utils import is_master, is_start_rank_node
 
 
 class BaseMultiModalImgText(BaseImageDataset):

@@ -14,7 +14,7 @@ from torch.nn import functional as F
 
 from metrics import METRICS_REGISTRY
 from metrics.metric_base import EpochMetric
-from utils import logger
+from cvnets.utils import logger
 
 
 @METRICS_REGISTRY.register("average_precision")

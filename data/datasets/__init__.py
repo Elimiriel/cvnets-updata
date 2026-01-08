@@ -16,9 +16,9 @@ from data.datasets.dataset_base import BaseDataset, BaseImageDataset, BaseVideoD
 from data.datasets.detection.base_detection import BaseDetectionDataset
 from data.datasets.multi_modal_img_text import arguments_multi_modal_img_text
 from data.datasets.segmentation.base_segmentation import BaseImageSegmentationDataset
-from utils import logger
-from utils.ddp_utils import is_master
-from utils.registry import Registry
+from cvnets.utils import logger
+from cvnets.utils.ddp_utils import is_master
+from cvnets.utils.registry import Registry
 
 DATASET_REGISTRY = Registry(
     registry_name="dataset_registry",

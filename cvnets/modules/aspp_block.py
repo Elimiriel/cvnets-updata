@@ -17,8 +17,8 @@ from cvnets.layers import (
     SeparableConv2d,
 )
 from cvnets.modules import BaseModule
-from utils import logger
-from utils.ddp_utils import is_master
+from cvnets.utils import logger
+from cvnets.utils.ddp_utils import is_master
 
 
 class ASPP(BaseModule):

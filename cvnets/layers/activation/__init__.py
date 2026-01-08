@@ -10,7 +10,7 @@ from typing import Optional
 
 import torch.nn
 
-from utils import logger
+from cvnets.utils import logger
 
 SUPPORTED_ACT_FNS = []
 ACT_FN_REGISTRY = {}
