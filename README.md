@@ -1,5 +1,9 @@
 # CVNets: A library for training computer vision networks
 
+> Note: This release consolidates modules under the `cvnets` namespace (e.g., `cvnets.data`, `cvnets.utils`). If your code imports `data` or `utils` directly, update imports or use the provided compatibility shim (if enabled).
+>
+> **Compatibility note:** numpy **must remain in the 1.x series** (for example `numpy>=1.21.2,<2.0`) due to ABI and compatibility considerations.
+
 CVNets is a computer vision toolkit that allows researchers and engineers to train standard and novel mobile- 
 and non-mobile computer vision models for variety of tasks, including object classification, object detection,
 semantic segmentation, and foundation models (e.g., CLIP).
