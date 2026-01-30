@@ -1,4 +1,6 @@
-# Training ResNets on the ImageNet dataset
+# Training Classification Models on the ImageNet dataset
+
+## Training ResNets on the ImageNet dataset
 
 Single node 8-GPU training of `ResNet-50` with `simple training recipe` can be done using below command:
 

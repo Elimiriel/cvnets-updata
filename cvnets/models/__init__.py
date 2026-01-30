@@ -1,78 +1,71 @@
 #
 # For licensing see accompanying LICENSE file.
-# Copyright (C) 2023 Apple Inc. All Rights Reserved.
+# Copyright (C) 2022 Apple Inc. All Rights Reserved.
 #
 
 import argparse
-from typing import Optional
+from utils import logger
+import os
 
-from cvnets.misc.common import freeze_modules_based_on_opts, load_pretrained_model
-from cvnets.models.base_model import BaseAnyNNModel
-from cvnets.utils import logger
-from cvnets.utils.download_utils import get_local_path
-from cvnets.utils.registry import Registry
-
-MODEL_REGISTRY = Registry(
-    registry_name="model_registry",
-    base_class=BaseAnyNNModel,
-    lazy_load_dirs=["cvnets/models"],
-    internal_dirs=["internal", "internal/projects/*"],
+from .segmentation import arguments_segmentation, build_segmentation_model
+from .classification import arguments_classification, build_classification_model
+from .detection import arguments_detection, build_detection_model
+from .video_classification import (
+    build_video_classification_model,
+    arguments_video_classification,
 )
 
 
-def get_model(
-    opts: argparse.Namespace,
-    category: Optional[str] = None,
-    model_name: Optional[str] = None,
-    *args,
-    **kwargs,
-) -> BaseAnyNNModel:
-    """Create a task-specific model from command-line arguments. If model category (or task) and name are
-    passed as an argument, then they are used. Otherwise, `dataset.category` and `model.{category}.name` are
-    read from command-line arguments to read model category and name, respectively.
-
-    Args:
-        opts: Command-line arguments
-        category: Category or task (e.g., segmentation)
-        model_name: Model name for a specific task (e.g., vit for classification)
-
-    Returns:
-        An instance of `cvnets.models.BaseAnyNNModel`.
-    """
-
-    if category is None:
-        category = getattr(opts, "dataset.category")
-
-    if model_name is None:
-        model_name = getattr(opts, f"model.{category}.name")
-
-    if model_name == "__base__":
-        # __base__ is used to register the task-specific base classes. These classes often
-        # provide functionalities that can be re-used by sub-classes, but does not provide
-        # task-specific models.
-        logger.error(
-            f"For {category} task, model name can't be __base__. Please check."
-        )
-
-    model = MODEL_REGISTRY[model_name, category].build_model(opts, *args, **kwargs)
-
-    # for some categories, we do not have pre-trained path (e.g., segmentation_head).
-    # Therefore, we need to set the default value.
-    pretrained_wts_path = getattr(opts, f"model.{category}.pretrained", None)
-    if pretrained_wts_path is not None:
-        pretrained_model_path = get_local_path(opts, path=pretrained_wts_path)
-        model = load_pretrained_model(
-            model=model, wt_loc=pretrained_model_path, opts=opts
-        )
-
-    model = freeze_modules_based_on_opts(opts, model)
-    return model
+SUPPORTED_TASKS = [
+    name.lower()
+    for name in os.listdir(".")
+    if os.path.isdir(name)
+    and name.find("__") == -1  # check if it is a directory and not a __pycache__ folder
+]
 
 
 def arguments_model(parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
-    parser = BaseAnyNNModel.add_arguments(parser=parser)
-    parser = MODEL_REGISTRY.all_arguments(parser=parser)
+    # classification network
+    parser = arguments_classification(parser=parser)
+
+    # detection network
+    parser = arguments_detection(parser=parser)
+
+    # segmentation network
+    parser = arguments_segmentation(parser=parser)
+
+    # video classification network
+    parser = arguments_video_classification(parser=parser)
+
     return parser
 
-from cvnets.utils.import_utils import import_modules_from_folder
-import_modules_from_folder("cvnets/models")
+
+def get_model(opts):
+    dataset_category = getattr(opts, "dataset.category", "classification")
+    if dataset_category is None:
+        task_str = "--dataset.category cannot be None. Supported categories are:"
+        for i, task_name in enumerate(SUPPORTED_TASKS):
+            task_str += "\n\t {}: {}".format(i, task_name)
+        logger.error(task_str)
+
+    dataset_category = dataset_category.lower()
+
+    model = None
+    if dataset_category == "classification":
+        model = build_classification_model(opts=opts)
+    elif dataset_category == "segmentation":
+        model = build_segmentation_model(opts=opts)
+    elif dataset_category == "detection":
+        model = build_detection_model(opts=opts)
+    elif dataset_category == "video_classification":
+        model = build_video_classification_model(opts=opts)
+    else:
+        task_str = (
+            "Got {} as a task. Unfortunately, we do not support it yet."
+            "\nSupported tasks are:".format(dataset_category)
+        )
+        for i, task_name in enumerate(SUPPORTED_TASKS):
+            task_str += "\n\t {}: {}".format(i, task_name)
+        logger.error(task_str)
+
+    return model

@@ -1,11 +1,10 @@
 #
 # For licensing see accompanying LICENSE file.
-# Copyright (C) 2023 Apple Inc. All Rights Reserved.
+# Copyright (C) 2022 Apple Inc. All Rights Reserved.
 #
 
-from typing import Optional
-
-from torch import Tensor, nn
+from torch import nn, Tensor
+from typing import Optional, Tuple
 
 
 class Dropout(nn.Dropout):
@@ -28,6 +27,11 @@ class Dropout(nn.Dropout):
     ) -> None:
         super().__init__(p=p, inplace=inplace)
 
+    def profile_module(
+        self, input: Tensor, *args, **kwargs
+    ) -> Tuple[Tensor, float, float]:
+        return input, 0.0, 0.0
+
 
 class Dropout2d(nn.Dropout2d):
     """
@@ -47,3 +51,6 @@ class Dropout2d(nn.Dropout2d):
 
     def __init__(self, p: float = 0.5, inplace: bool = False):
         super().__init__(p=p, inplace=inplace)
+
+    def profile_module(self, input: Tensor, *args, **kwargs) -> (Tensor, float, float):
+        return input, 0.0, 0.0

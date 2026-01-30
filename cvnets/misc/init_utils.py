@@ -1,14 +1,14 @@
 #
 # For licensing see accompanying LICENSE file.
-# Copyright (C) 2023 Apple Inc. All Rights Reserved.
+# Copyright (C) 2022 Apple Inc. All Rights Reserved.
 #
 
+from torch import nn
 from typing import Optional
 
-from torch import nn
+from utils import logger
 
-from cvnets.layers import GroupLinear, LinearLayer, norm_layers_tuple
-from cvnets.utils import logger
+from ..layers import LinearLayer, GroupLinear, norm_layers_tuple
 
 supported_conv_inits = [
     "kaiming_normal",
@@ -59,13 +59,13 @@ def _init_nn_layers(
             nn.init.zeros_(module.bias)
     elif init_method == "normal":
         if module.weight is not None:
-            std = 1.0 / module.weight.size(1) ** 0.5 if std_val is None else std_val
+            std = 1.0 / module.weight.size(1) if std_val is None else std_val
             nn.init.normal_(module.weight, mean=0.0, std=std)
         if module.bias is not None:
             nn.init.zeros_(module.bias)
     elif init_method == "trunc_normal":
         if module.weight is not None:
-            std = 1.0 / module.weight.size(1) ** 0.5 if std_val is None else std_val
+            std = 1.0 / module.weight.size(1) if std_val is None else std_val
             nn.init.trunc_normal_(module.weight, mean=0.0, std=std)
         if module.bias is not None:
             nn.init.zeros_(module.bias)

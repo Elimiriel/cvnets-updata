@@ -1,55 +1,45 @@
+from pathlib import Path
 #
 # For licensing see accompanying LICENSE file.
-# Copyright (C) 2023 Apple Inc. All Rights Reserved.
+# Copyright (C) 2022 Apple Inc. All Rights Reserved.
 #
 
 import argparse
-import importlib
-import inspect
 import os
+import importlib, inspect
 
-from cvnets.layers.adaptive_pool import AdaptiveAvgPool2d
-from cvnets.layers.base_layer import BaseLayer
-from cvnets.layers.conv_layer import (
-    ConvLayer1d,
-    ConvLayer2d,
-    ConvLayer3d,
+from .base_layer import BaseLayer
+from .conv_layer import (
+    ConvLayer,
     NormActLayer,
-    SeparableConv1d,
-    SeparableConv2d,
-    SeparableConv3d,
-    TransposeConvLayer2d,
+    TransposeConvLayer,
+    ConvLayer3d,
+    SeparableConv,
 )
-from cvnets.layers.dropout import Dropout, Dropout2d
-from cvnets.layers.embedding import Embedding
-from cvnets.layers.flatten import Flatten
-from cvnets.layers.global_pool import GlobalPool
-from cvnets.layers.identity import Identity
-from cvnets.layers.linear_attention import LinearSelfAttention
-from cvnets.layers.linear_layer import GroupLinear, LinearLayer
-from cvnets.layers.multi_head_attention import MultiHeadAttention
-from cvnets.layers.normalization_layers import (
-    AdjustBatchNormMomentum,
-    get_normalization_layer,
-    norm_layers_tuple,
-)
-from cvnets.layers.pixel_shuffle import PixelShuffle
-from cvnets.layers.pooling import AvgPool2d, MaxPool2d
-from cvnets.layers.positional_embedding import PositionalEmbedding
-from cvnets.layers.single_head_attention import SingleHeadAttention
-from cvnets.layers.softmax import Softmax
-from cvnets.layers.stochastic_depth import StochasticDepth
-from cvnets.layers.upsample import UpSample
+from .linear_layer import LinearLayer, GroupLinear
+from .global_pool import GlobalPool
+from .identity import Identity
+from .non_linear_layers import get_activation_fn
+from .normalization_layers import get_normalization_layer, norm_layers_tuple
+from .pixel_shuffle import PixelShuffle
+from .upsample import UpSample
+from .pooling import MaxPool2d, AvgPool2d
+from .positional_encoding import SinusoidalPositionalEncoding, LearnablePositionEncoding
+from .normalization_layers import AdjustBatchNormMomentum
+from .adaptive_pool import AdaptiveAvgPool2d
+from .flatten import Flatten
+from .multi_head_attention import MultiHeadAttention
+from .dropout import Dropout, Dropout2d
+from .single_head_attention import SingleHeadAttention
+from .softmax import Softmax
+from .linear_attention import LinearSelfAttention
 
 __all__ = [
-    "ConvLayer1d",
-    "ConvLayer2d",
+    "ConvLayer",
     "ConvLayer3d",
-    "SeparableConv1d",
-    "SeparableConv2d",
-    "SeparableConv3d",
+    "SeparableConv",
     "NormActLayer",
-    "TransposeConvLayer2d",
+    "TransposeConvLayer",
     "LinearLayer",
     "GroupLinear",
     "GlobalPool",
@@ -60,30 +50,27 @@ __all__ = [
     "AvgPool2d",
     "Dropout",
     "Dropout2d",
+    "SinusoidalPositionalEncoding",
+    "LearnablePositionEncoding",
     "AdjustBatchNormMomentum",
     "Flatten",
     "MultiHeadAttention",
     "SingleHeadAttention",
     "Softmax",
     "LinearSelfAttention",
-    "Embedding",
-    "PositionalEmbedding",
-    "norm_layers_tuple",
-    "StochasticDepth",
-    "get_normalization_layer",
 ]
 
 
 # iterate through all classes and fetch layer specific arguments
 def layer_specific_args(parser: argparse.ArgumentParser):
-    layer_dir = os.path.dirname(__file__)
+    layer_dir = Path(__file__).resolve().parent
     parsed_layers = []
     for file in os.listdir(layer_dir):
-        path = os.path.join(layer_dir, file)
+        path = layer_dir / file
         if (
             not file.startswith("_")
             and not file.startswith(".")
-            and (file.endswith(".py") or os.path.isdir(path))
+            and (file.endswith(".py") or path.is_dir())
         ):
             layer_name = file[: file.find(".py")] if file.endswith(".py") else file
             module = importlib.import_module("cvnets.layers." + layer_name)

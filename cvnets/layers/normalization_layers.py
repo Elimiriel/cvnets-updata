@@ -1,18 +1,98 @@
 #
 # For licensing see accompanying LICENSE file.
-# Copyright (C) 2023 Apple Inc. All Rights Reserved.
+# Copyright (C) 2022 Apple Inc. All Rights Reserved.
 #
-import math
 
+import torch
 from torch import nn
+from typing import Optional
+from utils import logger
+import math
+from .identity import Identity
+from .normalization import (
+    BatchNorm1d,
+    BatchNorm2d,
+    SyncBatchNorm,
+    LayerNorm,
+    InstanceNorm1d,
+    InstanceNorm2d,
+    GroupNorm,
+    SUPPORTED_NORM_FNS,
+    BatchNorm3d,
+    LayerNorm2D,
+)
 
-from cvnets.layers.normalization import NORM_LAYER_CLS, build_normalization_layer
-from cvnets.utils import logger
 
-norm_layers_tuple = tuple(NORM_LAYER_CLS)
+norm_layers_tuple = (
+    BatchNorm1d,
+    BatchNorm2d,
+    SyncBatchNorm,
+    LayerNorm,
+    InstanceNorm1d,
+    InstanceNorm2d,
+    GroupNorm,
+    BatchNorm3d,
+    LayerNorm2D,
+)
 
 
-get_normalization_layer = build_normalization_layer
+def get_normalization_layer(
+    opts,
+    num_features: int,
+    norm_type: Optional[str] = None,
+    num_groups: Optional[int] = None,
+    *args,
+    **kwargs
+) -> nn.Module:
+    """
+    Helper function to get normalization layers
+    """
+
+    norm_type = (
+        getattr(opts, "model.normalization.name", "batch_norm")
+        if norm_type is None
+        else norm_type
+    )
+    num_groups = (
+        getattr(opts, "model.normalization.groups", 1)
+        if num_groups is None
+        else num_groups
+    )
+    momentum = getattr(opts, "model.normalization.momentum", 0.1)
+
+    norm_layer = None
+    norm_type = norm_type.lower() if norm_type is not None else None
+    if norm_type in ["batch_norm", "batch_norm_2d"]:
+        norm_layer = BatchNorm2d(num_features=num_features, momentum=momentum)
+    elif norm_type == "batch_norm_3d":
+        return BatchNorm3d(num_features=num_features, momentum=momentum)
+    elif norm_type == "batch_norm_1d":
+        norm_layer = BatchNorm1d(num_features=num_features, momentum=momentum)
+    elif norm_type in ["sync_batch_norm", "sbn"]:
+        if torch.cuda.device_count() > 1:
+            norm_layer = SyncBatchNorm(num_features=num_features, momentum=momentum)
+        else:
+            norm_layer = BatchNorm2d(num_features=num_features, momentum=momentum)
+    elif norm_type in ["group_norm", "gn"]:
+        num_groups = math.gcd(num_features, num_groups)
+        norm_layer = GroupNorm(num_channels=num_features, num_groups=num_groups)
+    elif norm_type in ["instance_norm", "instance_norm_2d"]:
+        norm_layer = InstanceNorm2d(num_features=num_features, momentum=momentum)
+    elif norm_type == "instance_norm_1d":
+        norm_layer = InstanceNorm1d(num_features=num_features, momentum=momentum)
+    elif norm_type in ["layer_norm", "ln"]:
+        norm_layer = LayerNorm(num_features)
+    elif norm_type in ["layer_norm_2d"]:
+        norm_layer = LayerNorm2D(num_features=num_features)
+    elif norm_type == "identity":
+        norm_layer = Identity()
+    else:
+        logger.error(
+            "Supported normalization layer arguments are: {}. Got: {}".format(
+                SUPPORTED_NORM_FNS, norm_type
+            )
+        )
+    return norm_layer
 
 
 class AdjustBatchNormMomentum(object):

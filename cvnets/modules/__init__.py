@@ -1,30 +1,18 @@
 #
 # For licensing see accompanying LICENSE file.
-# Copyright (C) 2023 Apple Inc. All Rights Reserved.
+# Copyright (C) 2022 Apple Inc. All Rights Reserved.
 #
-# isort: skip_file
-from cvnets.modules.base_module import BaseModule
-from cvnets.modules.squeeze_excitation import SqueezeExcitation
-from cvnets.modules.mobilenetv2 import InvertedResidual, InvertedResidualSE
-from cvnets.modules.resnet_modules import (
-    BasicResNetBlock,
-    BottleneckResNetBlock,
-)
-from cvnets.modules.aspp_block import ASPP
-from cvnets.modules.transformer import TransformerEncoder
-from cvnets.modules.windowed_transformer import WindowedTransformerEncoder
-from cvnets.modules.pspnet_module import PSP
-from cvnets.modules.mobilevit_block import MobileViTBlock, MobileViTBlockv2
-from cvnets.modules.feature_pyramid import FeaturePyramidNetwork
-from cvnets.modules.ssd_heads import SSDHead, SSDInstanceHead
-from cvnets.modules.efficientnet import EfficientNetBlock
-from cvnets.modules.mobileone_block import MobileOneBlock, RepLKBlock
-from cvnets.modules.swin_transformer_block import (
-    SwinTransformerBlock,
-    PatchMerging,
-    Permute,
-)
-from cvnets.modules.regnet_modules import XRegNetBlock, AnyRegNetStage
+
+from .base_module import BaseModule
+from .squeeze_excitation import SqueezeExcitation
+from .mobilenetv2 import InvertedResidual, InvertedResidualSE
+from .resnet_modules import BasicResNetBlock, BottleneckResNetBlock
+from .aspp_block import ASPP
+from .transformer import TransformerEncoder
+from .pspnet_module import PSP
+from .mobilevit_block import MobileViTBlock, MobileViTBlockv2
+from .feature_pyramid import FeaturePyramidNetwork
+from .ssd_heads import SSDHead, SSDInstanceHead
 
 
 __all__ = [
@@ -34,20 +22,11 @@ __all__ = [
     "BottleneckResNetBlock",
     "ASPP",
     "TransformerEncoder",
-    "WindowedTransformerEncoder",
     "SqueezeExcitation",
     "PSP",
     "MobileViTBlock",
     "MobileViTBlockv2",
-    "MobileOneBlock",
-    "RepLKBlock",
     "FeaturePyramidNetwork",
     "SSDHead",
     "SSDInstanceHead",
-    "EfficientNetBlock",
-    "SwinTransformerBlock",
-    "PatchMerging",
-    "Permute",
-    "XRegNetBlock",
-    "AnyRegNetStage",
 ]

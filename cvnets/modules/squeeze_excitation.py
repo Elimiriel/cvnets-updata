@@ -1,17 +1,16 @@
 #
 # For licensing see accompanying LICENSE file.
-# Copyright (C) 2023 Apple Inc. All Rights Reserved.
+# Copyright (C) 2022 Apple Inc. All Rights Reserved.
 #
 
-from typing import Optional
-
 import torch
-from torch import Tensor, nn
+from torch import nn, Tensor
+from typing import Optional
+from utils.math_utils import make_divisible
 
-from cvnets.layers import AdaptiveAvgPool2d, ConvLayer2d
-from cvnets.layers.activation import build_activation_layer
-from cvnets.modules import BaseModule
-from cvnets.utils.math_utils import make_divisible
+from ..layers import AdaptiveAvgPool2d, ConvLayer, get_activation_fn
+from ..modules import BaseModule
+from ..misc.profiler import module_profile
 
 
 class SqueezeExcitation(BaseModule):
@@ -22,7 +21,6 @@ class SqueezeExcitation(BaseModule):
         opts: command-line arguments
         in_channels (int): :math:`C` from an expected input of size :math:`(N, C, H, W)`
         squeeze_factor (Optional[int]): Reduce :math:`C` by this factor. Default: 4
-        squeeze_channels (Optional[int]): This module's output channels. Overrides squeeze_factor if specified
         scale_fn_name (Optional[str]): Scaling function name. Default: sigmoid
 
     Shape:
@@ -35,15 +33,13 @@ class SqueezeExcitation(BaseModule):
         opts,
         in_channels: int,
         squeeze_factor: Optional[int] = 4,
-        squeeze_channels: Optional[int] = None,
         scale_fn_name: Optional[str] = "sigmoid",
         *args,
         **kwargs
     ) -> None:
-        if squeeze_channels is None:
-            squeeze_channels = max(make_divisible(in_channels // squeeze_factor, 8), 32)
+        squeeze_channels = max(make_divisible(in_channels // squeeze_factor, 8), 32)
 
-        fc1 = ConvLayer2d(
+        fc1 = ConvLayer(
             opts=opts,
             in_channels=in_channels,
             out_channels=squeeze_channels,
@@ -53,7 +49,7 @@ class SqueezeExcitation(BaseModule):
             use_norm=False,
             use_act=True,
         )
-        fc2 = ConvLayer2d(
+        fc2 = ConvLayer(
             opts=opts,
             in_channels=squeeze_channels,
             out_channels=in_channels,
@@ -63,7 +59,13 @@ class SqueezeExcitation(BaseModule):
             use_norm=False,
             use_act=False,
         )
-        act_fn = build_activation_layer(opts, act_type=scale_fn_name, inplace=True)
+        if scale_fn_name == "sigmoid":
+            act_fn = get_activation_fn(act_type="sigmoid")
+        elif scale_fn_name == "hard_sigmoid":
+            act_fn = get_activation_fn(act_type="hard_sigmoid", inplace=True)
+        else:
+            raise NotImplementedError
+
         super().__init__()
         self.se_layer = nn.Sequential()
         self.se_layer.add_module(
@@ -79,6 +81,10 @@ class SqueezeExcitation(BaseModule):
 
     def forward(self, x: Tensor, *args, **kwargs) -> Tensor:
         return x * self.se_layer(x)
+
+    def profile_module(self, input: Tensor, *args, **kwargs) -> (Tensor, float, float):
+        _, params, macs = module_profile(module=self.se_layer, x=input)
+        return input, params, macs
 
     def __repr__(self) -> str:
         return "{}(in_channels={}, squeeze_factor={}, scale_fn={})".format(

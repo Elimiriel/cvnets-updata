@@ -1,29 +1,28 @@
 #
 # For licensing see accompanying LICENSE file.
-# Copyright (C) 2023 Apple Inc. All Rights Reserved.
+# Copyright (C) 2022 Apple Inc. All Rights Reserved.
 #
 
+from torch import nn
 import argparse
 from typing import Dict, List, Optional, Tuple
 
-from torch import nn
+from utils.math_utils import bound_fn
 
-from cvnets.layers import (
-    ConvLayer2d,
-    Dropout,
-    GlobalPool,
-    Identity,
+from . import register_cls_models, BaseEncoder
+from .config.mobilenetv1 import get_configuration
+from ...layers import (
+    ConvLayer,
     LinearLayer,
-    SeparableConv2d,
+    GlobalPool,
+    Dropout,
+    SeparableConv,
+    Identity,
 )
-from cvnets.models import MODEL_REGISTRY
-from cvnets.models.classification.base_image_encoder import BaseImageEncoder
-from cvnets.models.classification.config.mobilenetv1 import get_configuration
-from cvnets.utils.math_utils import bound_fn
 
 
-@MODEL_REGISTRY.register(name="mobilenetv1", type="classification")
-class MobileNetv1(BaseImageEncoder):
+@register_cls_models(name="mobilenetv1")
+class MobileNetv1(BaseEncoder):
     """
     This class defines the `MobileNet architecture <https://arxiv.org/abs/1704.04861>`_
     """
@@ -42,13 +41,13 @@ class MobileNetv1(BaseImageEncoder):
             val = round(0.1 * width_mult, 3)
             classifier_dropout = bound_fn(min_val=0.0, max_val=0.1, value=val)
 
-        super().__init__(opts, *args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         cfg = get_configuration(opts=opts)
 
         self.model_conf_dict = dict()
         input_channels = cfg["conv1_out"]
-        self.conv_1 = ConvLayer2d(
+        self.conv_1 = ConvLayer(
             opts=opts,
             in_channels=image_channels,
             out_channels=input_channels,
@@ -130,7 +129,9 @@ class MobileNetv1(BaseImageEncoder):
     @classmethod
     def add_arguments(cls, parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
         """Add model specific arguments"""
-        group = parser.add_argument_group(title=cls.__name__)
+        group = parser.add_argument_group(
+            title="".format(cls.__name__), description="".format(cls.__name__)
+        )
         group.add_argument(
             "--model.classification.mobilenetv1.width-multiplier",
             type=float,
@@ -162,7 +163,7 @@ class MobileNetv1(BaseImageEncoder):
                 stride = 1
 
             mv1_block.append(
-                SeparableConv2d(
+                SeparableConv(
                     opts=opts,
                     in_channels=input_channel,
                     out_channels=out_channels,
@@ -177,7 +178,7 @@ class MobileNetv1(BaseImageEncoder):
 
         for i in range(n_repeat):
             mv1_block.append(
-                SeparableConv2d(
+                SeparableConv(
                     opts=opts,
                     in_channels=input_channel,
                     out_channels=out_channels,

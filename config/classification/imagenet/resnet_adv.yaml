@@ -1,23 +1,21 @@
-taskname: '+ ResNet-50 [adv]'
 common:
-  run_label: "train"
-  log_freq: 500
+  run_label: "run_1"
+  log_freq: 200
   auto_resume: true
   mixed_precision: true
   tensorboard_logging: false
   channels_last: true
-  save_all_checkpoints: true
 dataset:
   root_train: "/mnt/imagenet/training"
   root_val: "/mnt/imagenet/validation"
   name: "imagenet"
   category: "classification"
-  train_batch_size0: 256 # effective batch size is 1024 (256 * 4 GPUs)
+  train_batch_size0: 128
   val_batch_size0: 100
   eval_batch_size0: 100
   workers: 8
   persistent_workers: true
-  pin_memory: true
+  pin_memory: false
 image_augmentation:
   random_resized_crop:
     enable: true
@@ -57,8 +55,7 @@ loss:
   category: "classification"
   classification:
     name: "cross_entropy"
-    cross_entropy:
-      label_smoothing: 0.1
+    label_smoothing: 0.1
 optim:
   name: "sgd"
   weight_decay: 4.e-5

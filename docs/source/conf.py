@@ -1,8 +1,3 @@
-#
-# For licensing see accompanying LICENSE file.
-# Copyright (C) 2023 Apple Inc. All Rights Reserved.
-#
-
 # Configuration file for the Sphinx documentation builder.
 #
 # This file only contains a selection of the most common options. For a full
@@ -23,8 +18,8 @@ sys.path.insert(0, os.path.abspath("../.."))
 
 # -- Project information -----------------------------------------------------
 
-project = "CVNets: A library for training computer vision networks"
-copyright = "Copyright (C) 2023 Apple Inc. All Rights Reserved."
+project = "CVNet: High Performance Library for Computer Vision"
+copyright = "Copyright (C) 2022 Apple Inc. All Rights Reserved."
 author = "Sachin Mehta"
 
 source_suffix = [".rst"]

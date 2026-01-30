@@ -1,23 +1,23 @@
 #
 # For licensing see accompanying LICENSE file.
-# Copyright (C) 2023 Apple Inc. All Rights Reserved.
+# Copyright (C) 2022 Apple Inc. All Rights Reserved.
 #
 
-import argparse
-from typing import Dict, Optional, Tuple
-
 from torch import nn
+import argparse
+from typing import Dict, Tuple, Optional
 
-from cvnets.layers import ConvLayer2d, Dropout, GlobalPool, LinearLayer
-from cvnets.models import MODEL_REGISTRY
-from cvnets.models.classification.base_image_encoder import BaseImageEncoder
-from cvnets.models.classification.config.mobilevit import get_configuration
-from cvnets.modules import InvertedResidual, MobileViTBlock
-from cvnets.utils import logger
+from utils import logger
+
+from . import register_cls_models
+from .base_cls import BaseEncoder
+from .config.mobilevit import get_configuration
+from ...layers import ConvLayer, LinearLayer, GlobalPool, Dropout, SeparableConv
+from ...modules import InvertedResidual, MobileViTBlock
 
 
-@MODEL_REGISTRY.register(name="mobilevit", type="classification")
-class MobileViT(BaseImageEncoder):
+@register_cls_models("mobilevit")
+class MobileViT(BaseEncoder):
     """
     This class implements the `MobileViT architecture <https://arxiv.org/abs/2110.02178?context=cs.LG>`_
     """
@@ -34,11 +34,11 @@ class MobileViT(BaseImageEncoder):
 
         mobilevit_config = get_configuration(opts=opts)
 
-        super().__init__(opts, *args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         # store model configuration in a dictionary
         self.model_conf_dict = dict()
-        self.conv_1 = ConvLayer2d(
+        self.conv_1 = ConvLayer(
             opts=opts,
             in_channels=image_channels,
             out_channels=out_channels,
@@ -88,7 +88,7 @@ class MobileViT(BaseImageEncoder):
 
         in_channels = out_channels
         exp_channels = min(mobilevit_config["last_layer_exp_factor"] * in_channels, 960)
-        self.conv_1x1_exp = ConvLayer2d(
+        self.conv_1x1_exp = ConvLayer(
             opts=opts,
             in_channels=in_channels,
             out_channels=exp_channels,
@@ -126,7 +126,9 @@ class MobileViT(BaseImageEncoder):
 
     @classmethod
     def add_arguments(cls, parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
-        group = parser.add_argument_group(title=cls.__name__)
+        group = parser.add_argument_group(
+            title="".format(cls.__name__), description="".format(cls.__name__)
+        )
         group.add_argument(
             "--model.classification.mit.mode",
             type=str,

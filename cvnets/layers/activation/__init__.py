@@ -1,32 +1,39 @@
 #
 # For licensing see accompanying LICENSE file.
-# Copyright (C) 2023 Apple Inc. All Rights Reserved.
+# Copyright (C) 2022 Apple Inc. All Rights Reserved.
 #
 
-import argparse
-import importlib
 import os
-from typing import Optional
-
-import torch.nn
-
-from cvnets.utils import logger
+import importlib
+from pathlib import Path
+import argparse
 
 SUPPORTED_ACT_FNS = []
-ACT_FN_REGISTRY = {}
 
 
 def register_act_fn(name):
-    def register_fn(cls):
+    def register_fn(fn):
         if name in SUPPORTED_ACT_FNS:
             raise ValueError(
                 "Cannot register duplicate activation function ({})".format(name)
             )
         SUPPORTED_ACT_FNS.append(name)
-        ACT_FN_REGISTRY[name] = cls
-        return cls
+        return fn
 
     return register_fn
+
+
+# automatically import different activation functions
+act_dir = Path(__file__).resolve().parent
+for file in os.listdir(act_dir):
+    path = act_dir / file
+    if (
+        not file.startswith("_")
+        and not file.startswith(".")
+        and (file.endswith(".py") or path.is_dir())
+    ):
+        model_name = file[: file.find(".py")] if file.endswith(".py") else file
+        module = importlib.import_module("cvnets.layers.activation." + model_name)
 
 
 def arguments_activation_fn(parser: argparse.ArgumentParser):
@@ -55,61 +62,28 @@ def arguments_activation_fn(parser: argparse.ArgumentParser):
     return parser
 
 
-def build_activation_layer(
-    opts: argparse.Namespace,
-    act_type: Optional[str] = None,
-    inplace: Optional[bool] = None,
-    negative_slope: Optional[float] = None,
-    num_parameters: int = -1,
-) -> torch.nn.Module:
-    """
-    Helper function to build the activation function. If any of the optional
-    arguments are not provided (i.e. None), the corresponding ``model.activation.*``
-    config entry will be used as default value.
-
-    Args:
-        act_type: Name of the activation layer.
-            Default: --model.activation.name config value.
-        inplace: If true, operation will be inplace.
-            Default: --model.activation.inplace config value.
-        negative_slope: Negative slope parameter for leaky_relu.
-            Default: --model.activation.neg_slop config value.
-    """
-    assert isinstance(
-        opts, argparse.Namespace
-    ), f"Expected first argument to be an argparse.Namespace, but received a {type(opts)}."
-    if act_type is None:
-        act_type = getattr(opts, "model.activation.name")
-    if inplace is None:
-        inplace = getattr(opts, "model.activation.inplace")
-    if negative_slope is None:
-        negative_slope = getattr(opts, "model.activation.neg_slope")
-
-    act_type = act_type.lower()
-    act_layer = None
-    if act_type in ACT_FN_REGISTRY:
-        act_layer = ACT_FN_REGISTRY[act_type](
-            num_parameters=num_parameters,
-            inplace=inplace,
-            negative_slope=negative_slope,
-        )
-    else:
-        logger.error(
-            "Supported activation layers are: {}. Supplied argument is: {}".format(
-                SUPPORTED_ACT_FNS, act_type
-            )
-        )
-    return act_layer
+# import later to avoid circular loop
+from .gelu import GELU
+from .hard_sigmoid import Hardsigmoid
+from .hard_swish import Hardswish
+from .leaky_relu import LeakyReLU
+from .prelu import PReLU
+from .relu import ReLU
+from .relu6 import ReLU6
+from .sigmoid import Sigmoid
+from .swish import Swish
+from .tanh import Tanh
 
 
-# automatically import different activation functions
-act_dir = os.path.dirname(__file__)
-for file in os.listdir(act_dir):
-    path = os.path.join(act_dir, file)
-    if (
-        not file.startswith("_")
-        and not file.startswith(".")
-        and (file.endswith(".py") or os.path.isdir(path))
-    ):
-        model_name = file[: file.find(".py")] if file.endswith(".py") else file
-        module = importlib.import_module("cvnets.layers.activation." + model_name)
+__all__ = [
+    "GELU",
+    "Hardsigmoid",
+    "Hardswish",
+    "LeakyReLU",
+    "PReLU",
+    "ReLU",
+    "ReLU6",
+    "Sigmoid",
+    "Swish",
+    "Tanh",
+]

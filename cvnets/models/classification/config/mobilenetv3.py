@@ -1,11 +1,11 @@
 #
 # For licensing see accompanying LICENSE file.
-# Copyright (C) 2023 Apple Inc. All Rights Reserved.
+# Copyright (C) 2022 Apple Inc. All Rights Reserved.
 #
 
 from typing import Dict
 
-from cvnets.utils import logger
+from utils import logger
 
 
 def get_configuration(opts) -> Dict:

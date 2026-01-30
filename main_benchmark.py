@@ -1,21 +1,18 @@
 #
 # For licensing see accompanying LICENSE file.
-# Copyright (C) 2023 Apple Inc. All Rights Reserved.
+# Copyright (C) 2022 Apple Inc. All Rights Reserved.
 #
 
-import time
-from typing import Optional
-
 import torch
-from torch.cuda.amp import autocast
+import time
+from torch.amp import autocast
 
 from cvnets import get_model
-from cvnets.engine.utils import autocast_fn
-from cvnets.options.opts import get_benchmarking_arguments
-from cvnets.utils import logger
-from cvnets.utils.common_utils import device_setup
-from cvnets.utils.pytorch_to_coreml import convert_pytorch_to_coreml
-from cvnets.utils.tensor_utils import create_rand_tensor
+from options.opts import get_bencmarking_arguments
+from utils import logger
+from utils.tensor_utils import create_rand_tensor
+from utils.common_utils import device_setup
+from utils.pytorch_to_coreml import convert_pytorch_to_coreml
 
 
 def cpu_timestamp(*args, **kwargs):
@@ -30,15 +27,9 @@ def cuda_timestamp(cuda_sync=False, device=None, *args, **kwargs):
     return time.perf_counter()
 
 
-def step(
-    time_fn,
-    model,
-    example_inputs,
-    autocast_enable: False,
-    amp_precision: Optional[str] = "float16",
-):
+def step(time_fn, model, example_inputs, autocast_enable: False):
     start_time = time_fn()
-    with autocast_fn(enabled=autocast_enable, amp_precision=amp_precision):
+    with autocast(device_type="cuda" if autocast_enable else "cpu", enabled=autocast_enable):
         model(example_inputs)
     end_time = time_fn(cuda_sync=True)
     return end_time - start_time
@@ -46,7 +37,7 @@ def step(
 
 def main_benchmark():
     # set-up
-    opts = get_benchmarking_arguments()
+    opts = get_bencmarking_arguments()
     # device set-up
     opts = device_setup(opts)
 
@@ -66,15 +57,15 @@ def main_benchmark():
         if device == torch.device("cpu")
         else getattr(opts, "common.mixed_precision", False)
     )
-    mixed_precision_dtype = getattr(opts, "common.mixed_precision_dtype", "float16")
 
     # load the model
     model = get_model(opts)
     model.eval()
-    # print model information
-    model.info()
 
     example_inp = create_rand_tensor(opts=opts, device="cpu", batch_size=batch_size)
+
+    if hasattr(model, "profile_model"):
+        model.profile_model(example_inp)
 
     # cool down for 5 seconds
     time.sleep(5)
@@ -99,7 +90,6 @@ def main_benchmark():
                 model=model,
                 example_inputs=example_inp,
                 autocast_enable=mixed_precision,
-                amp_precision=mixed_precision_dtype,
             )
 
         n_steps = n_samples = 0.0
@@ -111,7 +101,6 @@ def main_benchmark():
                 model=model,
                 example_inputs=example_inp,
                 autocast_enable=mixed_precision,
-                amp_precision=mixed_precision_dtype,
             )
             n_steps += step_time
             n_samples += batch_size

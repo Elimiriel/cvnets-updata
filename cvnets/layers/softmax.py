@@ -1,11 +1,10 @@
 #
 # For licensing see accompanying LICENSE file.
-# Copyright (C) 2023 Apple Inc. All Rights Reserved.
+# Copyright (C) 2022 Apple Inc. All Rights Reserved.
 #
 
-from typing import Optional
-
-from torch import Tensor, nn
+from torch import nn, Tensor
+from typing import Optional, Tuple
 
 
 class Softmax(nn.Softmax):
@@ -22,3 +21,6 @@ class Softmax(nn.Softmax):
 
     def __init__(self, dim: Optional[int] = -1, *args, **kwargs):
         super().__init__(dim=dim)
+
+    def profile_module(self, input: Tensor) -> Tuple[Tensor, float, float]:
+        return input, 0.0, 0.0

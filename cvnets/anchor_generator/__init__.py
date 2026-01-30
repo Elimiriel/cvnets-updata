@@ -1,21 +1,42 @@
 #
 # For licensing see accompanying LICENSE file.
-# Copyright (C) 2023 Apple Inc. All Rights Reserved.
+# Copyright (C) 2022 Apple Inc. All Rights Reserved.
 #
 
 import argparse
+import os
+import importlib
+from pathlib import Path
 
-from cvnets.anchor_generator.base_anchor_generator import BaseAnchorGenerator
-from cvnets.utils import logger
-from cvnets.utils.registry import Registry
+from utils import logger
+from utils.ddp_utils import is_master
+
+from .base_anchor_generator import BaseAnchorGenerator
 
 # register anchor generator
-ANCHOR_GEN_REGISTRY = Registry(
-    "anchor_gen",
-    base_class=BaseAnchorGenerator,
-    lazy_load_dirs=["cvnets/anchor_generator"],
-    internal_dirs=["internal", "internal/projects/*"],
-)
+ANCHOR_GEN_REGISTRY = {}
+
+
+def register_anchor_generator(name):
+    """Register anchor generators for object detection"""
+
+    def register_class(cls):
+        if name in ANCHOR_GEN_REGISTRY:
+            raise ValueError(
+                "Cannot register duplicate anchor generator ({})".format(name)
+            )
+
+        if not issubclass(cls, BaseAnchorGenerator):
+            raise ValueError(
+                "Anchor generator ({}: {}) must extend BaseAnchorGenerator".format(
+                    name, cls.__name__
+                )
+            )
+
+        ANCHOR_GEN_REGISTRY[name] = cls
+        return cls
+
+    return register_class
 
 
 def arguments_anchor_gen(parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
@@ -25,20 +46,41 @@ def arguments_anchor_gen(parser: argparse.ArgumentParser) -> argparse.ArgumentPa
         "--anchor-generator.name", type=str, help="Name of the anchor generator"
     )
 
-    # add class specific arguments
-    parser = ANCHOR_GEN_REGISTRY.all_arguments(parser)
+    for k, v in ANCHOR_GEN_REGISTRY.items():
+        parser = v.add_arguments(parser=parser)
+
     return parser
 
 
 def build_anchor_generator(opts, *args, **kwargs):
     """Build anchor generator for object detection"""
-    anchor_gen_name = getattr(opts, "anchor_generator.name")
+    anchor_gen_name = getattr(opts, "anchor_generator.name", None)
+    anchor_gen = None
+    if anchor_gen_name in ANCHOR_GEN_REGISTRY:
+        anchor_gen = ANCHOR_GEN_REGISTRY[anchor_gen_name](opts, *args, **kwargs)
+    else:
+        supported_anchor_gens = list(ANCHOR_GEN_REGISTRY.keys())
+        supp_anchor_gen_str = (
+            "Got {} as anchor generator. Supported anchor generators are:".format(
+                anchor_gen_name
+            )
+        )
+        for i, m_name in enumerate(supported_anchor_gens):
+            supp_anchor_gen_str += "\n\t {}: {}".format(i, logger.color_text(m_name))
 
-    # We registered the base class using a special `name` (i.e., `__base__`)
-    # in order to access the arguments defined inside those classes. However, these classes are not supposed to
-    # be used. Therefore, we raise an error for such cases
-    if anchor_gen_name == "__base__":
-        logger.error("__base__ can't be used as a projection name. Please check.")
-
-    anchor_gen = ANCHOR_GEN_REGISTRY[anchor_gen_name](opts, *args, **kwargs)
+        if is_master(opts):
+            logger.error(supp_anchor_gen_str)
     return anchor_gen
+
+
+# automatically import the anchor generators
+anchor_gen_dir = Path(__file__).resolve().parent
+for file in os.listdir(anchor_gen_dir):
+    path = anchor_gen_dir / file
+    if (
+        not file.startswith("_")
+        and not file.startswith(".")
+        and (file.endswith(".py") or path.is_dir())
+    ):
+        anc_gen = file[: file.find(".py")] if file.endswith(".py") else file
+        module = importlib.import_module("cvnets.anchor_generator." + anc_gen)

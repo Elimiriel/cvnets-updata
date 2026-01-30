@@ -1,16 +1,15 @@
 #
 # For licensing see accompanying LICENSE file.
-# Copyright (C) 2023 Apple Inc. All Rights Reserved.
+# Copyright (C) 2022 Apple Inc. All Rights Reserved.
 #
 
-import math
-from typing import Optional
-
 import torch
-from torch import Tensor, nn
+from torch import nn, Tensor
+import math
+from typing import Optional, Tuple
 
-from cvnets.layers.base_layer import BaseLayer
-from cvnets.layers.dropout import Dropout
+from .base_layer import BaseLayer
+from .dropout import Dropout
 
 
 class SinusoidalPositionalEncoding(BaseLayer):
@@ -102,6 +101,9 @@ class SinusoidalPositionalEncoding(BaseLayer):
         else:
             return self.forward_others(x, indices=indices)
 
+    def profile_module(self, input: Tensor) -> Tuple[Tensor, float, float]:
+        return input, 0.0, 0.0
+
     def __repr__(self):
         return "{}(dropout={})".format(self.__class__.__name__, self.dropout.p)
 
@@ -146,6 +148,9 @@ class LearnablePositionEncoding(BaseLayer):
         position_emb = position_emb.expand_as(x)
         x = x + position_emb
         return self.dropout(x)
+
+    def profile_module(self, input: Tensor) -> Tuple[Tensor, float, float]:
+        return input, 0.0, 0.0
 
     def __repr__(self):
         return "{}(embed_dim={}, vocab_size={}, dropout={})".format(

@@ -33,19 +33,17 @@ If you find CVNets useful, please cite the following papers:
 
 .. code-block::
 
-    @inproceedings{mehta2022mobilevit,
+    @article{mehta2021mobilevit,
         title={MobileViT: Light-weight, General-purpose, and Mobile-friendly Vision Transformer},
-        author={Sachin Mehta and Mohammad Rastegari},
-        booktitle={International Conference on Learning Representations},
-        year={2022}
+        author={Mehta, Sachin and Rastegari, Mohammad},
+        journal={arXiv preprint arXiv:2110.02178},
+        year={2021}
     }
 
-    @inproceedings{mehta2022cvnets, 
-        author = {Mehta, Sachin and Abdolhosseini, Farzad and Rastegari, Mohammad}, 
-        title = {CVNets: High Performance Library for Computer Vision}, 
-        year = {2022}, 
-        booktitle = {Proceedings of the 30th ACM International Conference on Multimedia}, 
-        series = {MM '22} 
+    @article{mehta2022cvnets,
+        title={CVNets: High Performance Library for Computer Vision},
+        author={Mehta, Sachin and Abdolhosseini, Farzad and Rastegari, Mohammad},
+        year={2022}
     }
 
 Indices and tables

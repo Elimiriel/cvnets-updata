@@ -1,11 +1,13 @@
 #
 # For licensing see accompanying LICENSE file.
-# Copyright (C) 2023 Apple Inc. All Rights Reserved.
+# Copyright (C) 2022 Apple Inc. All Rights Reserved.
 #
 
-from typing import Dict
+import math
+from typing import Dict, Sequence
 
-from cvnets.utils.math_utils import bound_fn, make_divisible
+from utils import logger
+from utils.math_utils import make_divisible, bound_fn
 
 
 def get_configuration(opts) -> Dict:

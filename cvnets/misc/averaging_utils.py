@@ -1,14 +1,13 @@
 #
 # For licensing see accompanying LICENSE file.
-# Copyright (C) 2023 Apple Inc. All Rights Reserved.
+# Copyright (C) 2022 Apple Inc. All Rights Reserved.
 #
-
-import argparse
-from copy import deepcopy
-from typing import Optional
 
 import torch
 from torch import nn
+from typing import Optional
+from copy import deepcopy
+import argparse
 
 
 class EMA(object):
@@ -63,10 +62,7 @@ def arguments_ema(parser: argparse.ArgumentParser):
         "--ema.enable", action="store_true", help="Use exponential moving average"
     )
     group.add_argument(
-        "--ema.momentum",
-        type=float,
-        default=0.0001,
-        help="EMA momentum. Defaults to 0.0001.",
+        "--ema.momentum", type=float, default=0.0001, help="EMA momentum"
     )
     group.add_argument(
         "--ema.copy-at-epoch",

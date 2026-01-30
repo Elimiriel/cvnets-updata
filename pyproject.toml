@@ -1,9 +1,31 @@
-[tool.isort]
-profile = "black"
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
 
-[tool.black]
-extend-exclude = '.history'
+[project]
+name = "cvnets"
+version = "0.2.0"
+description = "CVNets: A library for training computer vision networks"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "torch>=2.1",
+  "torchvision>=0.16",
+  "tqdm>=4.66",
+  "numpy>=1.26",
+  "ujson>=5.9",
+]
 
-[tool.pytest.ini_options]
-junit_family = 'xunit2'
-addopts = '--junit-xml=./build/test-results/junit_reports/junit.xml'
+[tool.setuptools]
+packages = {find = {exclude = ["build*", "config_files*"]}}
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501"]
+
+[tool.pyright]
+pythonVersion = "3.10"
+typeCheckingMode = "basic"
+reportMissingTypeStubs = "none"

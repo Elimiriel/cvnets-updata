@@ -1,13 +1,12 @@
 #
 # For licensing see accompanying LICENSE file.
-# Copyright (C) 2023 Apple Inc. All Rights Reserved.
+# Copyright (C) 2022 Apple Inc. All Rights Reserved.
 #
 
-from typing import Optional
+from torch import nn, Tensor
+from typing import Optional, Tuple
 
-from torch import Tensor, nn
-
-from cvnets.layers.normalization import register_norm_fn
+from . import register_norm_fn
 
 
 @register_norm_fn(name="group_norm")
@@ -17,7 +16,7 @@ class GroupNorm(nn.GroupNorm):
 
     Args:
         num_groups (int): number of groups to separate the input channels into
-        num_features (int): :math:`C` from an expected input of size :math:`(N, C, *)`
+        num_channels (int): :math:`C` from an expected input of size :math:`(N, C, *)`
         eps (Optional, float): Value added to the denominator for numerical stability. Default: 1e-5
         affine (bool): If ``True``, use learnable affine parameters. Default: ``True``
 
@@ -34,12 +33,17 @@ class GroupNorm(nn.GroupNorm):
     def __init__(
         self,
         num_groups: int,
-        num_features: int,
+        num_channels: int,
         eps: Optional[float] = 1e-5,
         affine: Optional[bool] = True,
         *args,
         **kwargs
     ) -> None:
         super().__init__(
-            num_groups=num_groups, num_channels=num_features, eps=eps, affine=affine
+            num_groups=num_groups, num_channels=num_channels, eps=eps, affine=affine
         )
+
+    def profile_module(self, input: Tensor) -> Tuple[Tensor, float, float]:
+        # Since normalization layers can be fused, we do not count their operations
+        params = sum([p.numel() for p in self.parameters()])
+        return input, params, 0.0

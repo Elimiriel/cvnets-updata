@@ -1,21 +1,22 @@
 #
 # For licensing see accompanying LICENSE file.
-# Copyright (C) 2023 Apple Inc. All Rights Reserved.
+# Copyright (C) 2022 Apple Inc. All Rights Reserved.
 #
 
+import torch
+from typing import Optional
+import numpy as np
 import argparse
 from itertools import product
-from typing import List, Optional
-
-import numpy as np
-import torch
+from typing import List
 from torch import Tensor
 
-from cvnets.anchor_generator import ANCHOR_GEN_REGISTRY, BaseAnchorGenerator
-from cvnets.utils import logger
+from utils import logger
+
+from . import register_anchor_generator, BaseAnchorGenerator
 
 
-@ANCHOR_GEN_REGISTRY.register(name="ssd")
+@register_anchor_generator(name="ssd")
 class SSDAnchorGenerator(BaseAnchorGenerator):
     """
     This class generates anchors (or priors) ``on-the-fly`` for the
@@ -86,7 +87,9 @@ class SSDAnchorGenerator(BaseAnchorGenerator):
         """
         Adds SSD anchor generator-specific arguments to the parser
         """
-        group = parser.add_argument_group(title=cls.__name__)
+        group = parser.add_argument_group(
+            title="".format(cls.__name__), description="".format(cls.__name__)
+        )
         group.add_argument(
             "--anchor-generator.ssd.output-strides",
             nargs="+",
@@ -178,7 +181,7 @@ class SSDAnchorGenerator(BaseAnchorGenerator):
 
             # change h/w ratio of the small sized box based on aspect ratios
             for ratio in aspect_ratio:
-                ratio = ratio**0.5
+                ratio = ratio ** 0.5
                 default_anchors_ctr.extend(
                     [
                         [cx, cy, min_size_w * ratio, min_size_h / ratio],

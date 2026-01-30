@@ -1,21 +1,24 @@
 #
 # For licensing see accompanying LICENSE file.
-# Copyright (C) 2023 Apple Inc. All Rights Reserved.
+# Copyright (C) 2022 Apple Inc. All Rights Reserved.
 #
-from typing import Optional
-
 import torch
 from torch import Tensor
+from typing import Optional, Tuple
 from torch.nn import functional as F
 
-from cvnets.layers.base_layer import BaseLayer
-from cvnets.layers.conv_layer import ConvLayer2d
-from cvnets.layers.dropout import Dropout
+from .base_layer import BaseLayer
+from .conv_layer import ConvLayer
+from .dropout import Dropout
+from ..misc.profiler import module_profile
+
+
+# TODO: Add link to the paper
 
 
 class LinearSelfAttention(BaseLayer):
     """
-    This layer applies a self-attention with linear complexity, as described in `MobileViTv2 <https://arxiv.org/abs/2206.02680>`_ paper.
+    This layer applies a self-attention with linear complexity, as described in `this paper <>`_
     This layer can be used for self- as well as cross-attention.
 
     Args:
@@ -48,7 +51,7 @@ class LinearSelfAttention(BaseLayer):
     ) -> None:
         super().__init__()
 
-        self.qkv_proj = ConvLayer2d(
+        self.qkv_proj = ConvLayer(
             opts=opts,
             in_channels=embed_dim,
             out_channels=1 + (2 * embed_dim),
@@ -59,7 +62,7 @@ class LinearSelfAttention(BaseLayer):
         )
 
         self.attn_dropout = Dropout(p=attn_dropout)
-        self.out_proj = ConvLayer2d(
+        self.out_proj = ConvLayer(
             opts=opts,
             in_channels=embed_dim,
             out_channels=embed_dim,
@@ -85,7 +88,7 @@ class LinearSelfAttention(BaseLayer):
             channels == 1
         ), "The inner-product between input and latent node (query) is a scalar"
 
-        up_scale_factor = int(num_pixels**0.5)
+        up_scale_factor = int(num_pixels ** 0.5)
         patch_h = patch_w = int(context_scores.shape[-1] ** 0.5)
         # [1, 1, P, N] --> [1, P, h, w]
         context_scores = context_scores.reshape(1, num_pixels, patch_h, patch_w)
@@ -100,10 +103,9 @@ class LinearSelfAttention(BaseLayer):
         context_map = (context_map - min_val) / (max_val - min_val)
 
         try:
-            import os
-            from glob import glob
-
             import cv2
+            from glob import glob
+            import os
 
             # convert from float to byte
             context_map = (context_map * 255).byte().cpu().numpy()
@@ -213,3 +215,21 @@ class LinearSelfAttention(BaseLayer):
             return self._forward_self_attn(x, *args, **kwargs)
         else:
             return self._forward_cross_attn(x, x_prev=x_prev, *args, **kwargs)
+
+    def profile_module(self, input) -> Tuple[Tensor, float, float]:
+        params = macs = 0.0
+
+        qkv, p, m = module_profile(module=self.qkv_proj, x=input)
+        params += p
+        macs += m
+
+        query, key, value = torch.split(
+            qkv, split_size_or_sections=[1, self.embed_dim, self.embed_dim], dim=1
+        )
+
+        if self.out_proj is not None:
+            out_p, p, m = module_profile(module=self.out_proj, x=value)
+            params += p
+            macs += m
+
+        return input, params, macs

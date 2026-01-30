@@ -1,23 +1,22 @@
 #
 # For licensing see accompanying LICENSE file.
-# Copyright (C) 2023 Apple Inc. All Rights Reserved.
+# Copyright (C) 2022 Apple Inc. All Rights Reserved.
 #
 
 import os
-from typing import List, Optional
-
+from pathlib import Path
 import torch
 
-from cvnets.common import TMP_RES_FOLDER
 from cvnets import get_model
-from cvnets.options.opts import get_conversion_arguments
-from cvnets.utils import logger
-from cvnets.utils.checkpoint_utils import CHECKPOINT_EXTN
-from cvnets.utils.pytorch_to_coreml import convert_pytorch_to_coreml
+from options.opts import get_conversion_arguments
+from common import TMP_RES_FOLDER
+from utils.pytorch_to_coreml import convert_pytorch_to_coreml
+from utils import logger
+from utils.checkpoint_utils import CHECKPOINT_EXTN
 
 
-def main_worker_conversion(args: Optional[List[str]] = None):
-    opts = get_conversion_arguments(args=args)
+def main_worker_conversion():
+    opts = get_conversion_arguments()
 
     # set coreml conversion flag to true
     setattr(opts, "common.enable_coreml_compatible_module", True)
@@ -34,14 +33,13 @@ def main_worker_conversion(args: Optional[List[str]] = None):
 
     coreml_extn = getattr(opts, "conversion.coreml_extn", "mlmodel")
 
-    results_folder = getattr(opts, "common.results_loc", TMP_RES_FOLDER)
-    if not os.path.isdir(results_folder):
-        os.makedirs(results_folder)
+    results_folder = Path(getattr(opts, "common.results_loc", TMP_RES_FOLDER))
+    results_folder.mkdir(parents=True, exist_ok=True)
 
-    model_dst_loc = "{}/{}.{}".format(results_folder, model_name, coreml_extn)
+    model_dst_loc = results_folder / f"{model_name}.{coreml_extn}"
 
-    if os.path.isfile(model_dst_loc):
-        os.remove(model_dst_loc)
+    if model_dst_loc.exists():
+        model_dst_loc.unlink()
 
     conversion_success = False
     try:
@@ -52,7 +50,7 @@ def main_worker_conversion(args: Optional[List[str]] = None):
         jit_model = converted_models_dict["jit"]
         jit_optimized = converted_models_dict["jit_optimized"]
 
-        coreml_model.save(model_dst_loc)
+        coreml_model.save(str(model_dst_loc))
 
         torch.jit.save(
             jit_model,
@@ -74,7 +72,7 @@ def main_worker_conversion(args: Optional[List[str]] = None):
 
     if conversion_success:
         try:
-            from internal.utils.upload_utils import upload_to_server
+            from utils_internal.upload_utils import upload_to_server
 
             # upload function is only available for internal usage
             upload_to_server(

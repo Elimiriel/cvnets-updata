@@ -1,15 +1,14 @@
 #
 # For licensing see accompanying LICENSE file.
-# Copyright (C) 2023 Apple Inc. All Rights Reserved.
+# Copyright (C) 2022 Apple Inc. All Rights Reserved.
 #
 
-from typing import Optional
-
-from torch import Tensor, nn
+from torch import nn, Tensor
+from typing import Tuple, Optional
 
 
 class Flatten(nn.Flatten):
-    r"""
+    """
     This layer flattens a contiguous range of dimensions into a tensor.
 
     Args:
@@ -25,3 +24,7 @@ class Flatten(nn.Flatten):
 
     def __init__(self, start_dim: Optional[int] = 1, end_dim: Optional[int] = -1):
         super(Flatten, self).__init__(start_dim=start_dim, end_dim=end_dim)
+
+    def profile_module(self, input: Tensor) -> Tuple[Tensor, float, float]:
+        input = self.forward(input)
+        return input, 0.0, 0.0

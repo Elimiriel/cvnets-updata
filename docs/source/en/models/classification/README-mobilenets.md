@@ -1,4 +1,6 @@
-# Training MobileNets on the ImageNet dataset
+# Training Classification Models on the ImageNet dataset
+
+## Training MobileNets on the ImageNet dataset
 
 Single node 4-GPU training of `MobileNetv1-1.0` can be done using below command:
 

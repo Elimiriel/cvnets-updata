@@ -1,6 +1,5 @@
-taskname: '+ ResNet-50 SSD'
 common:
-  run_label: "train"
+  run_label: "run_1"
   accum_freq: 1
   accum_after_epoch: -1
   log_freq: 100
@@ -90,5 +89,5 @@ ema:
 stats:
   val: [ "loss", "coco_map"]
   train: ["loss"]
-  checkpoint_metric: "coco_map.bbox"
+  checkpoint_metric: "coco_map"
   checkpoint_metric_max: true

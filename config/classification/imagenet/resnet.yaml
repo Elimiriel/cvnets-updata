@@ -1,6 +1,5 @@
-taskname: '+ ResNet-50'
 common:
-  run_label: "train"
+  run_label: "run_1"
   log_freq: 500
   auto_resume: true
   mixed_precision: true
@@ -44,8 +43,7 @@ loss:
   category: "classification"
   classification:
     name: "cross_entropy"
-    cross_entropy:
-      label_smoothing: 0.1
+    label_smoothing: 0.1
 optim:
   name: "sgd"
   weight_decay: 1.e-4
